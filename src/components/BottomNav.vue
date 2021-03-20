@@ -26,7 +26,7 @@ export default {
 	},
 	methods: {
 		navigate(event, link) {
-			event.stopPropogation();
+			// event.stopPropogation();
 			if (link.to || !link.href) return;
 			this.$vuetify.goTo(link.href);
 		},

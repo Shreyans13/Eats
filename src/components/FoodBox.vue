@@ -1,13 +1,5 @@
 <template>
-	<v-card :loading="loading" class="my-5" max-width="374">
-		<template slot="progress">
-			<v-progress-linear
-				color="deep-purple"
-				height="10"
-				indeterminate
-			></v-progress-linear>
-		</template>
-
+	<v-card max-width="374" @click="fun">
 		<v-img
 			height="150"
 			src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSoUeJ-Na6Tq8HNONT8_4u3RBpEStlRWYbuxQ&usqp=CAU"
@@ -43,5 +35,10 @@
 <script>
 export default {
 	name: "FoodBox",
+	methods: {
+		fun() {
+			console.log("clicked");
+		},
+	},
 };
 </script>

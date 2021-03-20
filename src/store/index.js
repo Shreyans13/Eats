@@ -25,9 +25,9 @@ export default new Vuex.Store({
 				},
 			},
 			{
-				text: "Donate",
-				to: "/donate",
-				icon: "fas fa-hand-holding-medical",
+				text: "History",
+				to: "/history",
+				icon: "fas fa-utensils",
 				meta: {
 					showToolbar: true,
 					showBottomNav: true,

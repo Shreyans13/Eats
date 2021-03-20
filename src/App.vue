@@ -1,6 +1,13 @@
 <template>
 	<v-app>
-		<top-bar></top-bar>
+		<!-- <top-bar
+			v-if="
+				$route.name == 'Donate' || $route.name == 'Account'
+					? false
+					: true
+			"
+		> -->
+		<top-bar v-if="toggle"> </top-bar>
 		<v-main>
 			<v-container fluid>
 				<router-view />
@@ -17,7 +24,14 @@ export default {
 	components: { BottomNav, TopBar },
 	name: "App",
 	data: () => ({
-		//
+		// TopBarToggle: true,
 	}),
+	computed: {
+		toggle() {
+			if (this.$route.name == "History" || this.$route.name == "Account")
+				return false;
+			return true;
+		},
+	},
 };
 </script>

@@ -1,14 +1,14 @@
 <template>
 	<div>
-		<v-card height="400">
+		<v-card>
 			<v-navigation-drawer permanent width="auto">
 				<v-list-item>
 					<v-list-item-content>
 						<v-list-item-title class="title">
-							Application
+							Zomato UI Clone
 						</v-list-item-title>
 						<v-list-item-subtitle>
-							subtext
+							Shreyans Jain
 						</v-list-item-subtitle>
 					</v-list-item-content>
 				</v-list-item>

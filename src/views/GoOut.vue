@@ -1,7 +1,12 @@
 <template>
 	<div>
 		<h2>Recommended for you</h2>
-		<food-box v-for="i in 10" :key="i" />
+		<br />
+		<v-row>
+			<v-col v-for="i in 10" :key="i">
+				<food-box />
+			</v-col>
+		</v-row>
 	</div>
 </template>
 
