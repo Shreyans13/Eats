@@ -1,7 +1,7 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
 import Order from "@/views/Order.vue";
-
+import Resturant from "@/views/Resturant.vue";
 Vue.use(VueRouter);
 
 const routes = [
@@ -37,6 +37,12 @@ const routes = [
 		// which is lazy-loaded when the route is visited.
 		component: () =>
 			import(/* webpackChunkName: "about" */ "../views/Account.vue"),
+	},
+	{
+		path: "/order/:id",
+		name: "Resturant",
+		component: Resturant,
+		// component: () => import(/* webpackChunkName: "about" */ "../views/Resturant.vue"),
 	},
 ];
 

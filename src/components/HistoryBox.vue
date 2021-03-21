@@ -1,5 +1,5 @@
 <template>
-	<v-card class="mx-auto" max-width="400">
+	<v-card class="mx-auto">
 		<v-list-item two-line>
 			<v-list-item-content>
 				<v-list-item-title class="headline">
@@ -34,12 +34,19 @@
 			hide-default-footer
 		></v-data-table>
 		<v-divider></v-divider>
-		<v-card-actions>
+		<v-card-actions class="">
 			<v-btn text depressed color="primary">
 				<v-icon small class="ma-2">
 					fas fa-shopping-bag
 				</v-icon>
 				View Order
+			</v-btn>
+			<v-spacer />
+			<v-btn small text outlined depressed>
+				<v-icon small class="ma-2">
+					fas fa-redo
+				</v-icon>
+				Repeat order
 			</v-btn>
 		</v-card-actions>
 	</v-card>

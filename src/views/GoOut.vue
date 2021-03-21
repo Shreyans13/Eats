@@ -1,5 +1,5 @@
 <template>
-	<div>
+	<v-container fluid>
 		<h2>Recommended for you</h2>
 		<br />
 		<v-row>
@@ -7,7 +7,7 @@
 				<food-box />
 			</v-col>
 		</v-row>
-	</div>
+	</v-container>
 </template>
 
 <script>

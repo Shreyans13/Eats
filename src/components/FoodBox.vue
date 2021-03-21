@@ -1,5 +1,9 @@
 <template>
-	<v-card max-width="374" @click="fun">
+	<v-card
+		max-width="374"
+		@click="navigate($event, '/order/123')"
+		to="/order/123"
+	>
 		<v-img
 			height="150"
 			src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSoUeJ-Na6Tq8HNONT8_4u3RBpEStlRWYbuxQ&usqp=CAU"
@@ -36,8 +40,8 @@
 export default {
 	name: "FoodBox",
 	methods: {
-		fun() {
-			console.log("clicked");
+		navigate(event, link) {
+			this.$vuetify.goTo(link);
 		},
 	},
 };

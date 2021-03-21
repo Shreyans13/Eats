@@ -1,5 +1,5 @@
 <template>
-	<div>
+	<v-container fluid>
 		<v-card class="mx-auto mb-5" max-width="400">
 			<v-img
 				class="white--text align-end"
@@ -14,7 +14,7 @@
 				<food-box />
 			</v-col>
 		</v-row>
-	</div>
+	</v-container>
 </template>
 <script>
 import FoodBox from "../components/FoodBox.vue";

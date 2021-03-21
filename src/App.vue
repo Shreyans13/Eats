@@ -1,17 +1,8 @@
 <template>
 	<v-app>
-		<!-- <top-bar
-			v-if="
-				$route.name == 'Donate' || $route.name == 'Account'
-					? false
-					: true
-			"
-		> -->
 		<top-bar v-if="toggle"> </top-bar>
 		<v-main>
-			<v-container fluid>
-				<router-view />
-			</v-container>
+			<router-view />
 		</v-main>
 		<bottom-nav />
 	</v-app>
@@ -28,7 +19,11 @@ export default {
 	}),
 	computed: {
 		toggle() {
-			if (this.$route.name == "History" || this.$route.name == "Account")
+			if (
+				this.$route.name == "History" ||
+				this.$route.name == "Account" ||
+				this.$route.name == "Resturant"
+			)
 				return false;
 			return true;
 		},
