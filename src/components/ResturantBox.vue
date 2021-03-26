@@ -25,6 +25,16 @@
 				Small plates, salads & sandwiches - an intimate setting with 12
 				indoor seats plus patio seating.
 			</div>
+			<div class="mt-2">
+				<v-btn icon color="amber">
+					<v-icon>fas fa-street-view</v-icon>
+				</v-btn>
+				<span class="font-weight-bold mr-5 pr-5">Home Delivery</span>
+				<v-btn icon color="amber">
+					<v-icon>fas fa-clock</v-icon>
+				</v-btn>
+				<span class="font-weight-bold"> 30 Min Delivery</span>
+			</div>
 		</v-card-text>
 
 		<v-divider class="mx-4"></v-divider>

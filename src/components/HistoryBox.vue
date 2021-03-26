@@ -3,7 +3,7 @@
 		<v-list-item two-line>
 			<v-list-item-content>
 				<v-list-item-title class="headline">
-					Swarnim`s Cafe
+					Yogesh`s Cafe
 				</v-list-item-title>
 				<v-list-item-subtitle> Kharar, Chandigarh</v-list-item-subtitle>
 			</v-list-item-content>
@@ -34,8 +34,23 @@
 			hide-default-footer
 		></v-data-table>
 		<v-divider></v-divider>
+		<v-list-item>
+			<v-list-item-content>
+				<v-row>
+					<v-col cols="9">Total</v-col>
+					<v-col cols="3"><span class="ml-md-12">₹ 750</span></v-col>
+				</v-row>
+			</v-list-item-content>
+		</v-list-item>
+		<v-divider></v-divider>
 		<v-card-actions class="">
-			<v-btn text depressed color="primary">
+			<v-btn
+				text
+				depressed
+				color="primary"
+				to="/history/123/summary"
+				@click="navigate($event, `/history/123/summary`)"
+			>
 				<v-icon small class="ma-2">
 					fas fa-shopping-bag
 				</v-icon>
@@ -53,6 +68,7 @@
 </template>
 
 <script>
+// import router from '../router/index'
 export default {
 	data() {
 		return {
@@ -76,6 +92,11 @@ export default {
 				},
 			],
 		};
+	},
+	methods: {
+		navigate(event, link) {
+			this.$vuetify.goTo(link);
+		},
 	},
 };
 </script>

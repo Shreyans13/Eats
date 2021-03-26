@@ -5,7 +5,7 @@
 				<v-icon>fas fa-street-view</v-icon>
 			</v-btn>
 
-			<v-app-bar-title>Ghatanji</v-app-bar-title>
+			<v-app-bar-title>Jamshedpur</v-app-bar-title>
 
 			<template v-slot:extension>
 				<p>ABC`</p>

@@ -1,10 +1,11 @@
 <template>
 	<v-app>
-		<top-bar v-if="toggle"> </top-bar>
+		<top-bar v-if="toggleTopBar"> </top-bar>
 		<v-main>
 			<router-view />
 		</v-main>
-		<bottom-nav />
+
+		<bottom-nav v-if="toggleBottomBar" />
 	</v-app>
 </template>
 
@@ -15,17 +16,28 @@ export default {
 	components: { BottomNav, TopBar },
 	name: "App",
 	data: () => ({
-		// TopBarToggle: true,
+		// TopBarToggleTopBar: true,
 	}),
 	computed: {
-		toggle() {
+		toggleTopBar() {
 			if (
 				this.$route.name == "History" ||
 				this.$route.name == "Account" ||
-				this.$route.name == "Resturant"
+				this.$route.name == "Resturant" ||
+				this.$route.name == "Summary" ||
+				this.$route.name == "ConfirmOrder" ||
+				this.$route.name == "OrderDelivery" 
 			)
 				return false;
 			return true;
+		},
+		toggleBottomBar() {
+			if (
+				this.$route.name == "Resturant" ||
+				this.$route.name == "Summary" || this.$route.name == "ConfirmOrder" || this.$route.name == "OrderDelivery"
+			)
+				return false;
+			else return true;
 		},
 	},
 };
