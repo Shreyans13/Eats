@@ -26,7 +26,7 @@ export default {
 				this.$route.name == "Resturant" ||
 				this.$route.name == "Summary" ||
 				this.$route.name == "ConfirmOrder" ||
-				this.$route.name == "OrderDelivery" 
+				this.$route.name == "OrderDelivery"
 			)
 				return false;
 			return true;
@@ -34,7 +34,9 @@ export default {
 		toggleBottomBar() {
 			if (
 				this.$route.name == "Resturant" ||
-				this.$route.name == "Summary" || this.$route.name == "ConfirmOrder" || this.$route.name == "OrderDelivery"
+				this.$route.name == "Summary" ||
+				this.$route.name == "ConfirmOrder" ||
+				this.$route.name == "OrderDelivery"
 			)
 				return false;
 			else return true;
