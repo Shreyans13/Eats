@@ -43,6 +43,7 @@ export default new Vuex.Store({
 				},
 			},
 		],
+		darkMode: true,
 	},
 	getters: {
 		links: (state) => state.items,
@@ -50,6 +51,7 @@ export default new Vuex.Store({
 			state.items.filter((link) => link.meta.showToolbar === true),
 		bottomLink: (state) =>
 			state.items.filter((link) => link.meta.showBottomNav === true),
+		darkMode: (state) => state.darkMode,
 	},
 	mutations: {},
 	actions: {},
