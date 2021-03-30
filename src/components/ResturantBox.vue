@@ -1,10 +1,17 @@
 <template>
 	<v-card>
-		<v-card-title>Cafe Badilico</v-card-title>
+		<v-carousel height="auto" hide-delimiters>
+			<v-carousel-item v-for="img in data.imgSrc" :key="img">
+				<v-img height="200px" :src="img"></v-img>
+				<!-- {{ img }} -->
+			</v-carousel-item>
+		</v-carousel>
+		<!-- {{ data }} -->
+		<v-card-title>{{ data.name }}</v-card-title>
 		<v-card-text>
 			<v-row align="center" class="mx-0">
 				<v-rating
-					:value="4.5"
+					:value="data.rating"
 					color="amber"
 					dense
 					half-increments
@@ -13,18 +20,15 @@
 				></v-rating>
 
 				<div class="grey--text ml-4">
-					4.5 (413)
+					{{ data.rating }} ({{ data.reviews }})
 				</div>
 			</v-row>
 
 			<div class="my-4 subtitle-1">
-				North Indian, Chinese, Biryani
+				{{ data.type }}
 			</div>
 
-			<div>
-				Small plates, salads & sandwiches - an intimate setting with 12
-				indoor seats plus patio seating.
-			</div>
+			<div>{{ data.desc }}</div>
 			<div class="mt-2">
 				<v-btn icon color="amber">
 					<v-icon>fas fa-street-view</v-icon>
@@ -33,7 +37,9 @@
 				<v-btn icon color="amber">
 					<v-icon>fas fa-clock</v-icon>
 				</v-btn>
-				<span class="font-weight-bold"> 30 Min Delivery</span>
+				<span class="font-weight-bold"
+					>{{ data.deliveryTime }} delivery</span
+				>
 			</div>
 		</v-card-text>
 
@@ -60,5 +66,8 @@
 </template>
 
 <script>
-export default {};
+export default {
+	name: "ResturantBox",
+	props: ["data"],
+};
 </script>

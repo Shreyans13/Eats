@@ -3,9 +3,19 @@
 		<v-app-bar app fixed flat elevate-on-scroll scroll color="#1e1e1e">
 			<v-btn icon @click="backNavigation">
 				<v-icon>fas fa-arrow-left</v-icon> </v-btn
-			><span class="text-h6">Cafe Badilico</span>
+			><span class="text-h6">{{ info.name }}</span>
 		</v-app-bar>
-		<resturant-box />
+		<resturant-box
+			:data="{
+				name: info.name,
+				rating: info.rating,
+				reviews: info.reviews,
+				type: info.type,
+				desc: info.shortDesc,
+				deliveryTime: info.deliveryTime,
+				imgSrc: info.imgSrc,
+			}"
+		/>
 		<v-expansion-panels readonly multiple :value="Panels" class="mt-5">
 			<v-expansion-panel v-for="(item, i) in 1" :key="i">
 				<v-expansion-panel-header>
@@ -17,13 +27,17 @@
 		</v-expansion-panels>
 		<v-footer app v-if="totalItems != 0">
 			<v-col class="text-center" cols="12">
-				<v-btn-toggle borderless >
+				<v-btn-toggle borderless>
 					<v-btn color="green"
 						><span class="font-weight-bold text-h6">
 							Q {{ totalItems }}
 						</span>
 					</v-btn>
-					<v-btn color="red" @click="navigate($event, '/order/123/confirm-order')" to="/order/123/confirm-order">
+					<v-btn
+						color="red"
+						@click="navigate($event, '/order/123/confirm-order')"
+						to="/order/123/confirm-order"
+					>
 						<v-icon class="mr-3">fas fa-shopping-bag</v-icon>
 						<span class="font-weight-bold text-h6 mr-3">
 							₹ {{ totalPrice }}</span
@@ -40,6 +54,7 @@
 import ListItem from "../components/ListItem.vue";
 import ResturantBox from "../components/ResturantBox.vue";
 import router from "../router/index";
+import { mapActions, mapGetters } from "vuex";
 
 export default {
 	components: { ResturantBox, ListItem },
@@ -59,10 +74,17 @@ export default {
 			type: "non-veg",
 		},
 	}),
+	computed: {
+		...mapGetters({ info: "getDetailResturant" }),
+		// ...mapGetters({ loading: "loading", resturants: "getResturants" }),
+	},
 	mounted() {
+		// console.log(this.id);
 		this.calcSelec();
+		this.setDetailResturant(this.$route.params.id);
 	},
 	methods: {
+		...mapActions(["setDetailResturant"]),
 		navigate(event, link) {
 			this.$vuetify.goTo(link);
 		},

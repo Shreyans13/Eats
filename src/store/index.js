@@ -1,6 +1,6 @@
 import Vue from "vue";
 import Vuex from "vuex";
-
+import resturants from "./modules/resturants";
 Vue.use(Vuex);
 
 export default new Vuex.Store({
@@ -43,17 +43,24 @@ export default new Vuex.Store({
 				},
 			},
 		],
-		darkMode: true,
+		theme: true,
+		loading: false,
 	},
 	getters: {
-		links: (state) => state.items,
 		appBarLinks: (state) =>
 			state.items.filter((link) => link.meta.showToolbar === true),
 		bottomLink: (state) =>
 			state.items.filter((link) => link.meta.showBottomNav === true),
-		darkMode: (state) => state.darkMode,
+		theme: (state) => state.theme,
+		loading: (state) => state.loading,
 	},
-	mutations: {},
+	mutations: {
+		updateLoadingState(state, payload) {
+			state.loading = payload;
+		},
+	},
 	actions: {},
-	modules: {},
+	modules: {
+		resturants,
+	},
 });
