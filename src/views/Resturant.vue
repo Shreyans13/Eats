@@ -17,12 +17,13 @@
 			}"
 		/>
 		<v-expansion-panels readonly multiple :value="Panels" class="mt-5">
-			<v-expansion-panel v-for="(item, i) in 1" :key="i">
-				<v-expansion-panel-header>
-					Recommended
+			<v-expansion-panel v-for="(item, i) in info.foodItems" :key="i">
+				<v-expansion-panel-header class="text-subtitle-1">
+					{{ item.type }}
 				</v-expansion-panel-header>
-				<list-item :item="temp" @getItem="updateItem" />
-				<list-item :item="temp2" @getItem="updateItem" />
+				<div v-for="(item, i) in item.list" :key="i">
+					<list-item :item="item" @getItem="updateItem" />
+				</div>
 			</v-expansion-panel>
 		</v-expansion-panels>
 		<v-footer app v-if="totalItems != 0">
@@ -63,16 +64,8 @@ export default {
 		order: [],
 		totalItems: 0,
 		totalPrice: 0,
-		temp: {
-			name: "Kachori",
-			rate: "50",
-			type: "veg",
-		},
-		temp2: {
-			name: "Fish",
-			rate: "100",
-			type: "non-veg",
-		},
+		foodItems: [],
+		firstLoad: false,
 	}),
 	computed: {
 		...mapGetters({ info: "getDetailResturant" }),
@@ -81,7 +74,10 @@ export default {
 	mounted() {
 		// console.log(this.id);
 		this.calcSelec();
-		this.setDetailResturant(this.$route.params.id);
+		this.setDetailResturant(this.$route.params.id).then(() => {
+			this.foodItems = this.info.foodItems;
+			this.firstLoad = true;
+		});
 	},
 	methods: {
 		...mapActions(["setDetailResturant"]),
@@ -92,7 +88,7 @@ export default {
 			router.go(-1);
 		},
 		calcSelec() {
-			for (let i = 0; i < 1; i++) {
+			for (let i = 0; i < 5; i++) {
 				this.Panels.push(i);
 			}
 		},
@@ -113,7 +109,7 @@ export default {
 			let total = 0;
 			let noOfItems = 0;
 			this.order.forEach((element) => {
-				total += element.rate * element.quantity;
+				total += element.price * element.quantity;
 				noOfItems += element.quantity;
 			});
 			this.totalItems = noOfItems;

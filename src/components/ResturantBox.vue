@@ -1,12 +1,12 @@
 <template>
 	<v-card>
-		<v-carousel height="auto" hide-delimiters>
+		<v-carousel height="auto" hide-delimiters cycle>
 			<v-carousel-item v-for="img in data.imgSrc" :key="img">
-				<v-img height="200px" :src="img"></v-img>
+				<v-img height="200px" :src="img" />
+				<!-- <v-parallax :src="img"></v-parallax> -->
 				<!-- {{ img }} -->
 			</v-carousel-item>
 		</v-carousel>
-		<!-- {{ data }} -->
 		<v-card-title>{{ data.name }}</v-card-title>
 		<v-card-text>
 			<v-row align="center" class="mx-0">
@@ -16,19 +16,17 @@
 					dense
 					half-increments
 					readonly
-					size="14"
+					size="20"
 				></v-rating>
-
-				<div class="grey--text ml-4">
-					{{ data.rating }} ({{ data.reviews }})
-				</div>
+				<div class="ml-2">{{ data.rating }}</div>
+				<div class="ml-4">{{ data.reviews }} reviews</div>
 			</v-row>
 
 			<div class="my-4 subtitle-1">
 				{{ data.type }}
 			</div>
 
-			<div>{{ data.desc }}</div>
+			<div class="text-justify">{{ data.desc }}</div>
 			<div class="mt-2">
 				<v-btn icon color="amber">
 					<v-icon>fas fa-street-view</v-icon>

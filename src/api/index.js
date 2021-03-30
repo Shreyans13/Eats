@@ -35,7 +35,7 @@ let resturantsDetail = {
 	data: [
 		{
 			name: "Yogesh`s Cafe",
-			rating: "4.7",
+			rating: 4.7,
 			reviews: "413",
 			type: "North Crusines",
 			shortDesc:
@@ -48,24 +48,48 @@ let resturantsDetail = {
 				"https://images.unsplash.com/photo-1432139509613-5c4255815697?ixid=MXwxMjA3fDB8MHxzZWFyY2h8MzN8fGZvb2R8ZW58MHx8MHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
 				"https://images.unsplash.com/photo-1540189549336-e6e99c3679fe?ixid=MXwxMjA3fDB8MHxzZWFyY2h8Mjl8fGZvb2R8ZW58MHx8MHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
 			],
-			items: {
-				recommended: [
-					{ name: "Chole Bhature", price: "50", type: "veg" },
-					{ name: "Rogan Josh", price: "60", type: "non-veg" },
-					{ name: "Stuffed Bati", price: "70", type: "veg" },
-				],
-				specials: [
-					{ name: "Chole Bhature", price: "50", type: "veg" },
-					{ name: "Rogan Josh", price: "60", type: "non-veg" },
-					{ name: "Stuffed Bati", price: "70", type: "veg" },
-					{
-						name: "Chicken Dum Biryani",
-						price: "70",
-						type: "non-veg",
-					},
-					{ name: "Malai ka Kheer", price: "110", type: "veg" },
-				],
-			},
+			foodItems: [
+				{
+					type: "Recommended",
+					list: [
+						{
+							name: "Chole Bhature",
+							price: "50",
+							type: "veg",
+							imgSrc:
+								"https://images.unsplash.com/photo-1475090169767-40ed8d18f67d?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxleHBsb3JlLWZlZWR8Mzd8fHxlbnwwfHx8&auto=format&fit=crop&w=500&q=60",
+						},
+						{
+							name: "Rogan Josh",
+							price: "60",
+							type: "non-veg",
+							imgSrc:
+								"https://images.unsplash.com/photo-1475090169767-40ed8d18f67d?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxleHBsb3JlLWZlZWR8Mzd8fHxlbnwwfHx8&auto=format&fit=crop&w=500&q=60",
+						},
+						{
+							name: "Stuffed Bati",
+							price: "70",
+							type: "veg",
+							imgSrc:
+								"https://images.unsplash.com/photo-1475090169767-40ed8d18f67d?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxleHBsb3JlLWZlZWR8Mzd8fHxlbnwwfHx8&auto=format&fit=crop&w=500&q=60",
+						},
+					],
+				},
+				{
+					type: "Specials",
+					list: [
+						{ name: "Chole Bhature", price: "50", type: "veg" },
+						{ name: "Rogan Josh", price: "60", type: "non-veg" },
+						{ name: "Stuffed Bati", price: "70", type: "veg" },
+						{
+							name: "Chicken Dum Biryani",
+							price: "70",
+							type: "non-veg",
+						},
+						{ name: "Malai ka Kheer", price: "110", type: "veg" },
+					],
+				},
+			],
 		},
 		{
 			name: "Vtrix`s Cafe",
@@ -81,24 +105,74 @@ let resturantsDetail = {
 				"https://images.unsplash.com/photo-1432139555190-58524dae6a55?ixid=MXwxMjA3fDB8MHxzZWFyY2h8Mzh8fGZvb2R8ZW58MHx8MHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
 				"https://images.unsplash.com/photo-1476718406336-bb5a9690ee2a?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80",
 			],
-			items: {
-				recommended: [
-					{ name: "Chole Bhature", price: "50", type: "veg" },
-					{ name: "Rogan Josh", price: "60", type: "non-veg" },
-					{ name: "Stuffed Bati", price: "70", type: "veg" },
-				],
-				specials: [
-					{ name: "Chole Bhature", price: "50", type: "veg" },
-					{ name: "Rogan Josh", price: "60", type: "non-veg" },
-					{ name: "Stuffed Bati", price: "70", type: "veg" },
-					{
-						name: "Chicken Dum Biryani",
-						price: "70",
-						type: "non-veg",
-					},
-					{ name: "Malai ka Kheer", price: "110", type: "veg" },
-				],
-			},
+			foodItems: [
+				{
+					type: "Recommended",
+					list: [
+						{
+							name: "Chole Bhature",
+							price: "50",
+							type: "veg",
+							imgSrc:
+								"https://images.unsplash.com/photo-1475090169767-40ed8d18f67d?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxleHBsb3JlLWZlZWR8Mzd8fHxlbnwwfHx8&auto=format&fit=crop&w=500&q=60",
+						},
+						{
+							name: "Rogan Josh",
+							price: "60",
+							type: "non-veg",
+							imgSrc:
+								"https://images.unsplash.com/photo-1475090169767-40ed8d18f67d?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxleHBsb3JlLWZlZWR8Mzd8fHxlbnwwfHx8&auto=format&fit=crop&w=500&q=60",
+						},
+						{
+							name: "Stuffed Bati",
+							price: "70",
+							type: "veg",
+							imgSrc:
+								"https://images.unsplash.com/photo-1475090169767-40ed8d18f67d?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxleHBsb3JlLWZlZWR8Mzd8fHxlbnwwfHx8&auto=format&fit=crop&w=500&q=60",
+						},
+					],
+				},
+				{
+					type: "Specials",
+					list: [
+						{
+							name: "Chole Bhature",
+							price: "50",
+							type: "veg",
+							imgSrc:
+								"https://images.unsplash.com/photo-1475090169767-40ed8d18f67d?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxleHBsb3JlLWZlZWR8Mzd8fHxlbnwwfHx8&auto=format&fit=crop&w=500&q=60",
+						},
+						{
+							name: "Rogan Josh",
+							price: "60",
+							type: "non-veg",
+							imgSrc:
+								"https://images.unsplash.com/photo-1475090169767-40ed8d18f67d?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxleHBsb3JlLWZlZWR8Mzd8fHxlbnwwfHx8&auto=format&fit=crop&w=500&q=60",
+						},
+						{
+							name: "Stuffed Bati",
+							price: "70",
+							type: "veg",
+							imgSrc:
+								"https://images.unsplash.com/photo-1475090169767-40ed8d18f67d?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxleHBsb3JlLWZlZWR8Mzd8fHxlbnwwfHx8&auto=format&fit=crop&w=500&q=60",
+						},
+						{
+							name: "Chicken Dum Biryani",
+							price: "70",
+							type: "non-veg",
+							imgSrc:
+								"https://images.unsplash.com/photo-1475090169767-40ed8d18f67d?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxleHBsb3JlLWZlZWR8Mzd8fHxlbnwwfHx8&auto=format&fit=crop&w=500&q=60",
+						},
+						{
+							name: "Malai ka Kheer",
+							price: "110",
+							type: "veg",
+							imgSrc:
+								"https://images.unsplash.com/photo-1475090169767-40ed8d18f67d?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxleHBsb3JlLWZlZWR8Mzd8fHxlbnwwfHx8&auto=format&fit=crop&w=500&q=60",
+						},
+					],
+				},
+			],
 		},
 	],
 };

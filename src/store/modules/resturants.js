@@ -29,10 +29,7 @@ export default {
 			}
 		},
 		setDetailResturant({ commit }, id) {
-			console.log(id);
-			console.log(commit);
 			api.getResturantsDetail(id).then((resturant) => {
-				console.log(resturant.data);
 				commit("updateDetailResturants", resturant.data);
 			});
 		},
