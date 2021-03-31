@@ -29,8 +29,10 @@ export default {
 			}
 		},
 		setDetailResturant({ commit }, id) {
+			commit("updateLoadingState", true);
 			api.getResturantsDetail(id).then((resturant) => {
 				commit("updateDetailResturants", resturant.data);
+				commit("updateLoadingState", false);
 			});
 		},
 	},

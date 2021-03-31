@@ -1,7 +1,6 @@
 <template>
-	<v-expansion-panel-content>
+	<v-expansion-panel-content v-scroll="onScroll">
 		<v-list two-line>
-			<!-- {{ overlay }} -->
 			<v-list-item class="px-0">
 				<v-list-item-avatar rounded class="ma-0">
 					<v-icon :color="item.type == 'veg' ? 'green' : 'red'" small>
@@ -15,9 +14,10 @@
 				>
 					<v-img :src="item.imgSrc" />
 				</v-list-item-avatar>
-				<v-overlay :value="overlay">
+				<v-overlay :value="overlay" opacity="0.7">
 					<v-img :src="item.imgSrc" @click="overlay = false" />
 				</v-overlay>
+				<!-- {{ item }} -->
 				<v-list-item-content>
 					<v-list-item-title>{{ item.name }}</v-list-item-title>
 					<v-list-item-subtitle>
@@ -82,6 +82,9 @@ export default {
 				quantity: this.counter,
 				price: this.item.price,
 			});
+		},
+		onScroll() {
+			if (this.overlay) this.overlay = false;
 		},
 	},
 };

@@ -5,49 +5,56 @@
 				<v-icon>fas fa-arrow-left</v-icon> </v-btn
 			><span class="text-h6">{{ info.name }}</span>
 		</v-app-bar>
-		<resturant-box
-			:data="{
-				name: info.name,
-				rating: info.rating,
-				reviews: info.reviews,
-				type: info.type,
-				desc: info.shortDesc,
-				deliveryTime: info.deliveryTime,
-				imgSrc: info.imgSrc,
-			}"
-		/>
-		<v-expansion-panels readonly multiple :value="Panels" class="mt-5">
-			<v-expansion-panel v-for="(item, i) in info.foodItems" :key="i">
-				<v-expansion-panel-header class="text-subtitle-1">
-					{{ item.type }}
-				</v-expansion-panel-header>
-				<div v-for="(item, i) in item.list" :key="i">
-					<list-item :item="item" @getItem="updateItem" />
-				</div>
-			</v-expansion-panel>
-		</v-expansion-panels>
-		<v-footer app v-if="totalItems != 0">
-			<v-col class="text-center" cols="12">
-				<v-btn-toggle borderless>
-					<v-btn color="green"
-						><span class="font-weight-bold text-h6">
-							Q {{ totalItems }}
-						</span>
-					</v-btn>
-					<v-btn
-						color="red"
-						@click="navigate($event, '/order/123/confirm-order')"
-						to="/order/123/confirm-order"
-					>
-						<v-icon class="mr-3">fas fa-shopping-bag</v-icon>
-						<span class="font-weight-bold text-h6 mr-3">
-							₹ {{ totalPrice }}</span
+		<v-skeleton-loader
+			type="image, article, table-heading, list-item-two-line, list-item-two-line, table-tfoot"
+			:loading="loading"
+		>
+			<resturant-box
+				:data="{
+					name: info.name,
+					rating: info.rating,
+					reviews: info.reviews,
+					type: info.type,
+					desc: info.shortDesc,
+					deliveryTime: info.deliveryTime,
+					imgSrc: info.imgSrc,
+				}"
+			/>
+			<v-expansion-panels readonly multiple :value="Panels" class="mt-5">
+				<v-expansion-panel v-for="(item, i) in info.foodItems" :key="i">
+					<v-expansion-panel-header class="text-subtitle-1">
+						{{ item.type }}
+					</v-expansion-panel-header>
+					<div v-for="(list, i) in item.list" :key="i">
+						<list-item :item="list" @getItem="updateItem" />
+					</div>
+				</v-expansion-panel>
+			</v-expansion-panels>
+			<v-footer app v-if="totalItems != 0">
+				<v-col class="text-center" cols="12">
+					<v-btn-toggle borderless>
+						<v-btn color="green"
+							><span class="font-weight-bold text-h6">
+								Q {{ totalItems }}
+							</span>
+						</v-btn>
+						<v-btn
+							color="red"
+							@click="
+								navigate($event, '/order/123/confirm-order')
+							"
+							to="/order/123/confirm-order"
 						>
-						Buy Now
-					</v-btn>
-				</v-btn-toggle>
-			</v-col>
-		</v-footer>
+							<v-icon class="mr-3">fas fa-shopping-bag</v-icon>
+							<span class="font-weight-bold text-h6 mr-3">
+								₹ {{ totalPrice }}</span
+							>
+							Buy Now
+						</v-btn>
+					</v-btn-toggle>
+				</v-col>
+			</v-footer>
+		</v-skeleton-loader>
 	</div>
 </template>
 
@@ -68,7 +75,7 @@ export default {
 		firstLoad: false,
 	}),
 	computed: {
-		...mapGetters({ info: "getDetailResturant" }),
+		...mapGetters({ loading: "loading", info: "getDetailResturant" }),
 		// ...mapGetters({ loading: "loading", resturants: "getResturants" }),
 	},
 	mounted() {

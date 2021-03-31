@@ -2,12 +2,20 @@
 	<v-card>
 		<v-carousel height="auto" hide-delimiters cycle>
 			<v-carousel-item v-for="img in data.imgSrc" :key="img">
-				<v-img height="200px" :src="img" />
+				<v-img
+					width="100%"
+					max-height="500px"
+					:aspect-ratio="2 / 1"
+					:src="img"
+				/>
 				<!-- <v-parallax :src="img"></v-parallax> -->
 				<!-- {{ img }} -->
 			</v-carousel-item>
 		</v-carousel>
-		<v-card-title>{{ data.name }}</v-card-title>
+		<v-card-title>
+			{{ data.name }}
+		</v-card-title>
+
 		<v-card-text>
 			<v-row align="center" class="mx-0">
 				<v-rating
@@ -67,5 +75,8 @@
 export default {
 	name: "ResturantBox",
 	props: ["data"],
+	data: () => ({}),
+	mounted() {},
+	methods: {},
 };
 </script>
