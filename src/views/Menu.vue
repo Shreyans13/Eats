@@ -38,13 +38,8 @@
 								Q {{ totalItems }}
 							</span>
 						</v-btn>
-						<v-btn
-							color="red"
-							@click="
-								navigate($event, '/order/123/confirm-order')
-							"
-							to="/order/123/confirm-order"
-						>
+						<v-btn color="red" @click="orderFood">
+							<!-- to="/order/123/confirm-order" -->
 							<v-icon class="mr-3">fas fa-shopping-bag</v-icon>
 							<span class="font-weight-bold text-h6 mr-3">
 								₹ {{ totalPrice }}</span
@@ -87,9 +82,14 @@ export default {
 		});
 	},
 	methods: {
-		...mapActions(["setDetailResturant"]),
-		navigate(event, link) {
-			this.$vuetify.goTo(link);
+		...mapActions(["setDetailResturant", "updateCart"]),
+		orderFood() {
+			this.updateCart(this.order);
+			this.navigate("/order/123/confirm-order");
+		},
+		navigate(link) {
+			router.push(link);
+			// this.$vuetify.goTo(link);
 		},
 		backNavigation() {
 			router.go(-1);

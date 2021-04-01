@@ -28,12 +28,18 @@ export default {
 				});
 			}
 		},
-		setDetailResturant({ commit }, id) {
-			commit("updateLoadingState", true);
-			api.getResturantsDetail(id).then((resturant) => {
-				commit("updateDetailResturants", resturant.data);
-				commit("updateLoadingState", false);
-			});
+		setDetailResturant({ commit, state }, id) {
+			// Object.keys(state.detailResturant).length === 0 && state.detailResturant.constructor === Object;
+			if (
+				Object.keys(state.detailResturant).length === 0 &&
+				state.detailResturant.constructor === Object
+			) {
+				commit("updateLoadingState", true);
+				api.getResturantsDetail(id).then((resturant) => {
+					commit("updateDetailResturants", resturant.data);
+					commit("updateLoadingState", false);
+				});
+			}
 		},
 	},
 };

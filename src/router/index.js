@@ -43,7 +43,7 @@ const routes = [
 		name: "Resturant",
 		// component: Resturant,
 		component: () =>
-			import(/* webpackChunkName: "about" */ "../views/Resturant.vue"),
+			import(/* webpackChunkName: "about" */ "../views/Menu.vue"),
 	},
 	{
 		path: "/order/:id/confirm-order",
@@ -62,8 +62,10 @@ const routes = [
 		path: "/order/:id/order-delivery/",
 		name: "OrderDelivery",
 		component: () =>
-			import(/* webpackChunkName: "about" */ "../views/OrderDelivery.vue"),
-	}
+			import(
+				/* webpackChunkName: "about" */ "../views/OrderDelivery.vue"
+			),
+	},
 ];
 
 const router = new VueRouter({
