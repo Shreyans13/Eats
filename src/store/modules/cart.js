@@ -2,11 +2,13 @@
 
 export default {
 	state: {
+		resturantName: "",
 		cart: [],
 		load: false,
 	},
 	getters: {
 		getCart: (state) => state.cart,
+		getName: (state) => state.resturantName,
 	},
 	mutations: {
 		setCart(state, payload) {
@@ -15,6 +17,9 @@ export default {
 		setLoad(state, payload) {
 			state.load = payload;
 		},
+		setResturantName(state, payload) {
+			state.resturantName = payload;
+		},
 	},
 	actions: {
 		updateCart({ commit }, payload) {
@@ -22,6 +27,9 @@ export default {
 		},
 		updateLoad({ commit }, payload) {
 			commit("setLoad", payload);
+		},
+		updateName({ commit }, payload) {
+			commit("setResturantName", payload);
 		},
 	},
 };

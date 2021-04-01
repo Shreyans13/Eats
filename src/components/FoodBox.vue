@@ -42,7 +42,7 @@ export default {
 	methods: {
 		navigate() {
 			// this.$vuetify.goTo(link);
-			router.push({ name: "Resturant", params: { id: "123" } });
+			router.push({ name: "Menu", params: { id: this.data.id } });
 		},
 	},
 };

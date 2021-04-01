@@ -119,7 +119,7 @@ let resturantsDetail = {
 		},
 		{
 			name: "Vtrix`s Cafe",
-			rating: "4.0",
+			rating: 4.0,
 			reviews: "400",
 			type: "South Crusines",
 			shortDesc: "",

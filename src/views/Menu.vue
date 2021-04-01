@@ -26,7 +26,18 @@
 						{{ item.type }}
 					</v-expansion-panel-header>
 					<div v-for="(list, i) in item.list" :key="i">
-						<list-item :item="list" @getItem="updateItem" />
+						<!-- <keep-alive>
+							<component
+								:is="cname"
+								:item="list"
+								@getItem="updateItem"
+							/>
+						</keep-alive> -->
+						<list-item
+							:item="list"
+							:resturantName="info.name"
+							@getItem="updateItem"
+						/>
 					</div>
 				</v-expansion-panel>
 			</v-expansion-panels>
@@ -62,12 +73,12 @@ import { mapActions, mapGetters } from "vuex";
 export default {
 	components: { ResturantBox, ListItem },
 	data: () => ({
+		cname: "ListItem",
 		Panels: [],
 		order: [],
 		totalItems: 0,
 		totalPrice: 0,
 		foodItems: [],
-		firstLoad: false,
 	}),
 	computed: {
 		...mapGetters({ loading: "loading", info: "getDetailResturant" }),
@@ -78,13 +89,13 @@ export default {
 		this.calcSelec();
 		this.setDetailResturant(this.$route.params.id).then(() => {
 			this.foodItems = this.info.foodItems;
-			this.firstLoad = true;
 		});
 	},
 	methods: {
-		...mapActions(["setDetailResturant", "updateCart"]),
+		...mapActions(["setDetailResturant", "updateCart", "updateName"]),
 		orderFood() {
 			this.updateCart(this.order);
+			this.updateName(this.info.name);
 			this.navigate("/order/123/confirm-order");
 		},
 		navigate(link) {

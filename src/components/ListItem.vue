@@ -31,7 +31,7 @@
 				<v-overlay :value="overlay" opacity="0.7">
 					<v-img :src="item.imgSrc" @click="overlay = false" />
 				</v-overlay>
-				<!-- {{ item }} -->
+				<!-- {{ cart }} -->
 				<v-list-item-content>
 					<v-list-item-title>{{ item.name }}</v-list-item-title>
 					<v-list-item-subtitle>
@@ -69,33 +69,52 @@
 </template>
 
 <script>
+import { mapGetters } from "vuex";
+
 export default {
+	name: "ListItem",
+	computed: {
+		...mapGetters({ cart: "getCart", name: "getName" }),
+	},
 	data: () => ({
 		counter: 0,
 		overlay: false,
 	}),
-	// props: ["item"],
 	props: {
 		item: {
 			required: true,
 		},
+		resturantName: {
+			required: true,
+		},
+	},
+	mounted() {
+		this.setCart();
 	},
 	methods: {
-		increment() {
-			this.counter++;
+		emit() {
 			this.$emit("getItem", {
 				name: this.item.name,
 				quantity: this.counter,
 				price: this.item.price,
 			});
 		},
+		setCart() {
+			if (this.resturantName == this.name)
+				this.cart.forEach((cartItem) => {
+					if (this.item.name == cartItem.name) {
+						this.counter = cartItem.quantity;
+					}
+				});
+			this.emit();
+		},
+		increment() {
+			this.counter++;
+			this.emit();
+		},
 		decrement() {
 			if (this.counter > 0) this.counter--;
-			this.$emit("getItem", {
-				name: this.item.name,
-				quantity: this.counter,
-				price: this.item.price,
-			});
+			this.emit();
 		},
 		onScroll() {
 			if (this.overlay) this.overlay = false;

@@ -5,6 +5,7 @@ export default {
 	state: {
 		resturants: null,
 		detailResturant: {},
+		id: Number,
 	},
 	getters: {
 		getResturants: (state) => state.resturants,
@@ -16,6 +17,9 @@ export default {
 		},
 		updateDetailResturants(state, payload) {
 			state.detailResturant = payload;
+		},
+		updateId(state, payload) {
+			state.id = payload;
 		},
 	},
 	actions: {
@@ -30,9 +34,11 @@ export default {
 		},
 		setDetailResturant({ commit, state }, id) {
 			if (
-				Object.keys(state.detailResturant).length === 0 &&
-				state.detailResturant.constructor === Object
+				(Object.keys(state.detailResturant).length === 0 &&
+					state.detailResturant.constructor === Object) ||
+				state.id != id
 			) {
+				commit("updateId", id);
 				commit("updateLoadingState", true);
 				api.getResturantsDetail(id).then((resturant) => {
 					commit("updateDetailResturants", resturant.data);

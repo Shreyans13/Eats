@@ -23,7 +23,7 @@ export default {
 			if (
 				this.$route.name == "History" ||
 				this.$route.name == "Account" ||
-				this.$route.name == "Resturant" ||
+				this.$route.name == "Menu" ||
 				this.$route.name == "Summary" ||
 				this.$route.name == "ConfirmOrder" ||
 				this.$route.name == "OrderDelivery"
@@ -33,7 +33,7 @@ export default {
 		},
 		toggleBottomBar() {
 			if (
-				this.$route.name == "Resturant" ||
+				this.$route.name == "Menu" ||
 				this.$route.name == "Summary" ||
 				this.$route.name == "ConfirmOrder" ||
 				this.$route.name == "OrderDelivery"
