@@ -12,7 +12,21 @@
 					class="ma-1 mr-4"
 					@click="overlay = !overlay"
 				>
-					<v-img :src="item.imgSrc" />
+					<v-img :src="item.imgSrc" :lazy-src="item.imgSrc">
+						<template v-slot:placeholder>
+							<v-row
+								class="fill-height ma-0"
+								align="center"
+								justify="center"
+							>
+								<v-progress-circular
+									:width="2"
+									indeterminate
+									color="grey lighten-5"
+								></v-progress-circular>
+							</v-row>
+						</template>
+					</v-img>
 				</v-list-item-avatar>
 				<v-overlay :value="overlay" opacity="0.7">
 					<v-img :src="item.imgSrc" @click="overlay = false" />

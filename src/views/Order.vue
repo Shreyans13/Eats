@@ -5,7 +5,20 @@
 				class="white--text align-end"
 				height="200px"
 				src="https://thefoodhog.com/wp-content/uploads/2020/02/india-2731817_1920.jpg"
+				lazy-src="https://thefoodhog.com/wp-content/uploads/2020/02/india-2731817_1920.jpg"
 			>
+				<template v-slot:placeholder>
+					<v-row
+						class="fill-height ma-0"
+						align="center"
+						justify="center"
+					>
+						<v-progress-circular
+							indeterminate
+							color="grey lighten-5"
+						></v-progress-circular>
+					</v-row>
+				</template>
 				<v-card-title>Special Discount for you</v-card-title>
 			</v-img>
 		</v-card>

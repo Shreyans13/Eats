@@ -7,7 +7,21 @@
 					max-height="500px"
 					:aspect-ratio="2 / 1"
 					:src="img"
-				/>
+					:lazy-src="img"
+				>
+					<template v-slot:placeholder>
+						<v-row
+							class="fill-height ma-0"
+							align="center"
+							justify="center"
+						>
+							<v-progress-circular
+								indeterminate
+								color="grey lighten-5"
+							></v-progress-circular>
+						</v-row>
+					</template>
+				</v-img>
 				<!-- <v-parallax :src="img"></v-parallax> -->
 				<!-- {{ img }} -->
 			</v-carousel-item>
@@ -34,7 +48,7 @@
 				{{ data.type }}
 			</div>
 
-			<div class="text-justify">{{ data.desc }}</div>
+			<!-- <div class="text-justify">{{ data.desc }}</div> -->
 			<div class="mt-2">
 				<v-btn icon color="amber">
 					<v-icon>fas fa-street-view</v-icon>

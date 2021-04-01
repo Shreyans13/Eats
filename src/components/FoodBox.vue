@@ -1,7 +1,15 @@
 <template>
 	<v-card max-width="374" @click="navigate()">
-		<v-img height="150" :src="data.imgSrc"></v-img>
-
+		<v-img height="150" :src="data.imgSrc" :lazy-src="data.imgSrc">
+			<template v-slot:placeholder>
+				<v-row class="fill-height ma-0" align="center" justify="center">
+					<v-progress-circular
+						indeterminate
+						color="grey lighten-5"
+					></v-progress-circular>
+				</v-row>
+			</template>
+		</v-img>
 		<v-card-title>
 			{{ data.name }}
 			<v-row class="justify-end">
