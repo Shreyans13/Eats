@@ -29,7 +29,6 @@ export default {
 			}
 		},
 		setDetailResturant({ commit, state }, id) {
-			// Object.keys(state.detailResturant).length === 0 && state.detailResturant.constructor === Object;
 			if (
 				Object.keys(state.detailResturant).length === 0 &&
 				state.detailResturant.constructor === Object
