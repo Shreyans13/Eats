@@ -84,6 +84,7 @@ export default {
 			],
 		};
 	},
+
 	methods: {
 		backNavigation() {
 			router.go(-1);

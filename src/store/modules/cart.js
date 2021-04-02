@@ -5,10 +5,22 @@ export default {
 		resturantName: "",
 		cart: [],
 		load: false,
+		totalPrice: Number,
+		totalQuantity: Number,
+		deliveryCharges: Number,
 	},
 	getters: {
 		getCart: (state) => state.cart,
 		getName: (state) => state.resturantName,
+		getOrder: (state) => {
+			return {
+				rName: state.resturantName,
+				totalPrice: state.totalPrice,
+				totalItems: state.totalQuantity,
+				cart: state.cart,
+				deliveryCharges: state.deliveryCharges,
+			};
+		},
 	},
 	mutations: {
 		setCart(state, payload) {
@@ -20,6 +32,15 @@ export default {
 		setResturantName(state, payload) {
 			state.resturantName = payload;
 		},
+		setTotalPrice(state, payload) {
+			state.totalPrice = payload;
+		},
+		setTotalQuantity(state, payload) {
+			state.totalQuantity = payload;
+		},
+		setDeliveryCharges(state, payload) {
+			state.deliveryCharges = payload;
+		},
 	},
 	actions: {
 		updateCart({ commit }, payload) {
@@ -30,6 +51,15 @@ export default {
 		},
 		updateName({ commit }, payload) {
 			commit("setResturantName", payload);
+		},
+		updateTotalPrice({ commit }, payload) {
+			commit("setTotalPrice", payload);
+		},
+		updateTotalQuantity({ commit }, payload) {
+			commit("setTotalQuantity", payload);
+		},
+		updateDeliveryCharges({ commit }, payload) {
+			commit("setDeliveryCharges", payload);
 		},
 	},
 };

@@ -38,6 +38,7 @@ let resturantsDetail = {
 			rating: 4.7,
 			reviews: "413",
 			type: "North Crusines",
+			deliveryCharges: 50,
 			shortDesc:
 				"In the coffee shop we are as awkward lovers, pretending to be there of convenience, afraid of our need to connect to one another. This place filled with people always so close and so far apart... this is the community of our era... as close as we can be without admitting the truth.",
 			deliveryTime: "30 mins",
@@ -79,27 +80,6 @@ let resturantsDetail = {
 					type: "Chef Specials",
 					list: [
 						{
-							name: "Chole Bhature",
-							price: "50",
-							type: "veg",
-							imgSrc:
-								"https://images.unsplash.com/photo-1475090169767-40ed8d18f67d?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxleHBsb3JlLWZlZWR8Mzd8fHxlbnwwfHx8&auto=format&fit=crop&w=500&q=60",
-						},
-						{
-							name: "Rogan Josh",
-							price: "60",
-							type: "non-veg",
-							imgSrc:
-								"https://images.unsplash.com/photo-1475090169767-40ed8d18f67d?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxleHBsb3JlLWZlZWR8Mzd8fHxlbnwwfHx8&auto=format&fit=crop&w=500&q=60",
-						},
-						{
-							name: "Stuffed Bati",
-							price: "70",
-							type: "veg",
-							imgSrc:
-								"https://images.unsplash.com/photo-1475090169767-40ed8d18f67d?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxleHBsb3JlLWZlZWR8Mzd8fHxlbnwwfHx8&auto=format&fit=crop&w=500&q=60",
-						},
-						{
 							name: "Chicken Dum Biryani",
 							price: "70",
 							type: "non-veg",
@@ -122,6 +102,7 @@ let resturantsDetail = {
 			rating: 4.0,
 			reviews: "400",
 			type: "South Crusines",
+			deliveryCharges: 50,
 			shortDesc: "",
 			deliveryTime: "45 mins",
 			rate: "100",

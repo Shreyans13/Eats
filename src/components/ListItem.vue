@@ -93,6 +93,7 @@ export default {
 	},
 	methods: {
 		emit() {
+			// if (this.counter != 0)
 			this.$emit("getItem", {
 				name: this.item.name,
 				quantity: this.counter,
@@ -100,13 +101,14 @@ export default {
 			});
 		},
 		setCart() {
-			if (this.resturantName == this.name)
+			if (this.resturantName == this.name) {
 				this.cart.forEach((cartItem) => {
 					if (this.item.name == cartItem.name) {
 						this.counter = cartItem.quantity;
 					}
 				});
-			this.emit();
+				if (this.counter != 0) this.emit();
+			}
 		},
 		increment() {
 			this.counter++;

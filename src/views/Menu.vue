@@ -20,6 +20,7 @@
 					imgSrc: info.imgSrc,
 				}"
 			/>
+			{{ order }}
 			<v-expansion-panels readonly multiple :value="Panels" class="mt-5">
 				<v-expansion-panel v-for="(item, i) in info.foodItems" :key="i">
 					<v-expansion-panel-header class="text-subtitle-1">
@@ -92,10 +93,20 @@ export default {
 		});
 	},
 	methods: {
-		...mapActions(["setDetailResturant", "updateCart", "updateName"]),
+		...mapActions([
+			"setDetailResturant",
+			"updateCart",
+			"updateName",
+			"updateTotalPrice",
+			"updateTotalQuantity",
+			"updateDeliveryCharges",
+		]),
 		orderFood() {
 			this.updateCart(this.order);
 			this.updateName(this.info.name);
+			this.updateTotalPrice(this.totalPrice);
+			this.updateTotalQuantity(this.totalItems);
+			this.updateDeliveryCharges(this.info.deliveryCharges);
 			this.navigate("/order/123/confirm-order");
 		},
 		navigate(link) {
