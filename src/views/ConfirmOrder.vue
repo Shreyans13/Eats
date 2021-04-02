@@ -10,9 +10,7 @@
 			<v-list>
 				<v-list-item>
 					<v-list-item-avatar>
-						<v-img
-							src="https://cdn.vuetifyjs.com/images/lists/4.jpg"
-						></v-img>
+						<v-img :src="order.rImg"></v-img>
 					</v-list-item-avatar>
 
 					<v-list-item-content>
@@ -65,13 +63,11 @@
 		<v-card class="mt-3">
 			<v-list-item>
 				<v-list-item-avatar>
-					<v-img
-						src="https://cdn.vuetifyjs.com/images/lists/2.jpg"
-					></v-img>
+					<v-img :src="user.img"></v-img>
 				</v-list-item-avatar>
 
 				<v-list-item-content>
-					<v-list-item-title>Vivek Kumar Sony</v-list-item-title>
+					<v-list-item-title>{{ user.name }}</v-list-item-title>
 				</v-list-item-content>
 			</v-list-item>
 			<v-list-item>
@@ -79,8 +75,28 @@
 					<v-list-item-title class="text-h6"
 						>Address</v-list-item-title
 					>
-					Lorem ipsum dolor sit amet consectetur, adipisicing elit.
-					Quia, dolor quod.
+					{{ user.address }}.
+				</v-list-item-content>
+			</v-list-item>
+		</v-card>
+		<v-card class="mt-3">
+			<v-list-item>
+				<!-- <v-list-item-avatar>
+					<v-img
+						src="https://cdn.vuetifyjs.com/images/lists/2.jpg"
+					></v-img>
+				</v-list-item-avatar> -->
+
+				<v-list-item-content>
+					<v-list-item-title>{{ order.rName }}</v-list-item-title>
+				</v-list-item-content>
+			</v-list-item>
+			<v-list-item>
+				<v-list-item-content>
+					<v-list-item-title class="text-h6"
+						>Address</v-list-item-title
+					>
+					{{ order.rAdd }}
 				</v-list-item-content>
 			</v-list-item>
 		</v-card>
@@ -94,9 +110,9 @@
 					</v-list-item-icon>
 
 					<v-list-item-content>
-						<v-list-item-title class="text-h6 font-weight-black"
-							>1234 ABCD 5678 EFGH 910I</v-list-item-title
-						>
+						<v-list-item-title class="text-h6 font-weight-black">{{
+							user.raPaSy
+						}}</v-list-item-title>
 					</v-list-item-content>
 				</v-list-item>
 			</v-list>
@@ -145,7 +161,7 @@ export default {
 		};
 	},
 	computed: {
-		...mapGetters({ order: "getOrder" }),
+		...mapGetters({ order: "getOrder", user: "getUser" }),
 		list() {
 			return this.order.cart;
 		},

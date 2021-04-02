@@ -39,6 +39,9 @@ let resturantsDetail = {
 			reviews: "413",
 			type: "North Crusines",
 			deliveryCharges: 50,
+			address: "Resturant Address goes here",
+			img:
+				"https://images.unsplash.com/photo-1514933651103-005eec06c04b?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxzZWFyY2h8NHx8cmVzdGF1cmFudHxlbnwwfHwwfA%3D%3D&auto=format&fit=crop&w=500&q=60",
 			shortDesc:
 				"In the coffee shop we are as awkward lovers, pretending to be there of convenience, afraid of our need to connect to one another. This place filled with people always so close and so far apart... this is the community of our era... as close as we can be without admitting the truth.",
 			deliveryTime: "30 mins",
@@ -103,6 +106,9 @@ let resturantsDetail = {
 			reviews: "400",
 			type: "South Crusines",
 			deliveryCharges: 50,
+			address: "Resturant Address goes here",
+			img:
+				"https://images.unsplash.com/photo-1514933651103-005eec06c04b?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxzZWFyY2h8NHx8cmVzdGF1cmFudHxlbnwwfHwwfA%3D%3D&auto=format&fit=crop&w=500&q=60",
 			shortDesc: "",
 			deliveryTime: "45 mins",
 			rate: "100",

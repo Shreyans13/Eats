@@ -3,6 +3,8 @@
 export default {
 	state: {
 		resturantName: "",
+		resturantAdress: "",
+		resturantImg: "",
 		cart: [],
 		load: false,
 		totalPrice: Number,
@@ -15,6 +17,8 @@ export default {
 		getOrder: (state) => {
 			return {
 				rName: state.resturantName,
+				rAdd: state.resturantAdress,
+				rImg: state.resturantImg,
 				totalPrice: state.totalPrice,
 				totalItems: state.totalQuantity,
 				cart: state.cart,
@@ -41,6 +45,12 @@ export default {
 		setDeliveryCharges(state, payload) {
 			state.deliveryCharges = payload;
 		},
+		setResturantAddress(state, payload) {
+			state.resturantAdress = payload;
+		},
+		setResturantImage(state, payload) {
+			state.resturantImg = payload;
+		},
 	},
 	actions: {
 		updateCart({ commit }, payload) {
@@ -60,6 +70,12 @@ export default {
 		},
 		updateDeliveryCharges({ commit }, payload) {
 			commit("setDeliveryCharges", payload);
+		},
+		updateResturantAddress({ commit }, payload) {
+			commit("setResturantAddress", payload);
+		},
+		updateResturantImage({ commit }, payload) {
+			commit("setResturantImage", payload);
 		},
 	},
 };

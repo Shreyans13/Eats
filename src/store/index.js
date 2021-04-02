@@ -1,7 +1,9 @@
 import Vue from "vue";
 import Vuex from "vuex";
+
 import resturants from "./modules/resturants";
 import cart from "./modules/cart";
+import user from "./modules/user";
 
 Vue.use(Vuex);
 
@@ -65,5 +67,6 @@ export default new Vuex.Store({
 	modules: {
 		resturants,
 		cart,
+		user,
 	},
 });
