@@ -31,6 +31,37 @@
 					<div class="text-justify">{{ info.shortDesc }}</div>
 				</template>
 			</resturant-box>
+			<v-expansion-panels readonly multiple :value="Panels" class="mt-5">
+				<v-expansion-panel
+					v-for="(item, i) in info.detailReviews"
+					:key="i"
+				>
+					<v-expansion-panel-header class="text-subtitle-1">
+						<v-row align="center" class="spacer" no-gutters>
+							<v-col cols="3">
+								<v-avatar size="36px">
+									<img
+										alt="Avatar"
+										src="https://avatars0.githubusercontent.com/u/9064066?v=4&s=460"
+									/>
+								</v-avatar>
+							</v-col>
+							<v-col cols="9">{{ item.name }}</v-col>
+						</v-row>
+						<template v-slot:actions>
+							<v-rating
+								small
+								:value="info.rating"
+								background-color="amber lighten-3"
+								color="amber"
+							></v-rating>
+						</template>
+					</v-expansion-panel-header>
+					<v-expansion-panel-content>
+						{{ item.review }}
+					</v-expansion-panel-content>
+				</v-expansion-panel>
+			</v-expansion-panels>
 		</v-skeleton-loader>
 	</div>
 </template>
@@ -42,7 +73,7 @@ import router from "../router/index";
 export default {
 	components: { ResturantBox },
 	data: () => ({
-		// foodItems: [],
+		Panels: [],
 	}),
 	computed: {
 		...mapGetters({
@@ -52,13 +83,18 @@ export default {
 	},
 	mounted() {
 		// console.log(this.id);
-		// this.calcSelec();
+		this.calcSelec();
 		this.setDetailResturant(this.$route.params.id);
 	},
 	methods: {
 		...mapActions(["setDetailResturant"]),
 		backNavigation() {
 			router.go(-1);
+		},
+		calcSelec() {
+			for (let i = 0; i < 5; i++) {
+				this.Panels.push(i);
+			}
 		},
 	},
 };

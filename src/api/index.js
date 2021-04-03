@@ -47,6 +47,18 @@ let resturantsDetail = {
 			deliveryTime: "30 mins",
 			rate: "75",
 			id: "123",
+			detailReviews: [
+				{
+					name: "Swarnim Doegar",
+					review: "This app looks awaesome.",
+					rating: 4,
+				},
+				{
+					name: "Prasanna Kumar",
+					review: "Hope food was better than the app",
+					rating: 3,
+				},
+			],
 			imgSrc: [
 				"https://images.unsplash.com/photo-1476224203421-9ac39bcb3327?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=1350&q=80",
 				"https://images.unsplash.com/photo-1432139509613-5c4255815697?ixid=MXwxMjA3fDB8MHxzZWFyY2h8MzN8fGZvb2R8ZW58MHx8MHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
@@ -115,6 +127,18 @@ let resturantsDetail = {
 			deliveryTime: "45 mins",
 			rate: "100",
 			id: "456",
+			detailReviews: [
+				{
+					name: "Swarnim Doegar",
+					review: "This app looks awaesome.",
+					rating: 4,
+				},
+				{
+					name: "Prasanna Kumar",
+					review: "Hope food was better than the app",
+					rating: 3,
+				},
+			],
 			imgSrc: [
 				"https://images.unsplash.com/photo-1476718406336-bb5a9690ee2a?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80",
 				"https://images.unsplash.com/photo-1467003909585-2f8a72700288?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80",
