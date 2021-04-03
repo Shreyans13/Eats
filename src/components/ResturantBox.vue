@@ -1,8 +1,10 @@
 <template>
 	<v-card>
 		<v-carousel height="auto" hide-delimiters cycle>
-			<v-carousel-item v-for="img in data.imgSrc" :key="img">
-				<v-img
+			<!-- <v-carousel-item v-for="img in data.imgSrc" :key="img"> -->
+			<slot name="image"></slot>
+			<slot name="parallax"></slot>
+			<!-- <v-img
 					width="100%"
 					max-height="500px"
 					:aspect-ratio="2 / 1"
@@ -21,10 +23,10 @@
 							></v-progress-circular>
 						</v-row>
 					</template>
-				</v-img>
-				<!-- <v-parallax :src="img"></v-parallax> -->
-				<!-- {{ img }} -->
-			</v-carousel-item>
+				</v-img> -->
+			<!-- <v-parallax :src="img"></v-parallax> -->
+			<!-- {{ img }} -->
+			<!-- </v-carousel-item> -->
 		</v-carousel>
 		<v-card-title>
 			{{ data.name }}
@@ -47,7 +49,7 @@
 			<div class="my-4 subtitle-1">
 				{{ data.type }}
 			</div>
-
+			<slot name="desc"></slot>
 			<!-- <div class="text-justify">{{ data.desc }}</div> -->
 			<div class="mt-2">
 				<v-btn icon color="amber">

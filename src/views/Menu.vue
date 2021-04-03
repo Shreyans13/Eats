@@ -19,7 +19,32 @@
 					deliveryTime: info.deliveryTime,
 					imgSrc: info.imgSrc,
 				}"
-			/>
+			>
+				<template v-slot:image>
+					<v-carousel-item v-for="img in info.imgSrc" :key="img">
+						<v-img
+							width="100%"
+							max-height="500px"
+							:aspect-ratio="2 / 1"
+							:src="img"
+							:lazy-src="img"
+						>
+							<template v-slot:placeholder>
+								<v-row
+									class="fill-height ma-0"
+									align="center"
+									justify="center"
+								>
+									<v-progress-circular
+										indeterminate
+										color="grey lighten-5"
+									></v-progress-circular>
+								</v-row>
+							</template>
+						</v-img>
+					</v-carousel-item>
+				</template>
+			</resturant-box>
 			<v-expansion-panels readonly multiple :value="Panels" class="mt-5">
 				<v-expansion-panel v-for="(item, i) in info.foodItems" :key="i">
 					<v-expansion-panel-header class="text-subtitle-1">

@@ -46,6 +46,15 @@ const routes = [
 			import(/* webpackChunkName: "about" */ "../views/Menu.vue"),
 	},
 	{
+		path: "/order/:id/book-resturant",
+		name: "BookResturant",
+		// component: Resturant,
+		component: () =>
+			import(
+				/* webpackChunkName: "about" */ "../views/BookResturant.vue"
+			),
+	},
+	{
 		path: "/order/:id/confirm-order",
 		name: "ConfirmOrder",
 		// component: Resturant,

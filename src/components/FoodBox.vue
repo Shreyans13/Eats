@@ -38,11 +38,17 @@
 import router from "../router/index";
 export default {
 	name: "FoodBox",
-	props: ["data"],
+	props: ["data", "nav"],
 	methods: {
 		navigate() {
 			// this.$vuetify.goTo(link);
-			router.push({ name: "Menu", params: { id: this.data.id } });
+			if (this.nav === "menu")
+				router.push({ name: "Menu", params: { id: this.data.id } });
+			else if (this.nav === "book")
+				router.push({
+					name: "BookResturant",
+					params: { id: this.data.id },
+				});
 		},
 	},
 };
