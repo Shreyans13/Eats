@@ -17,7 +17,7 @@ const routes = [
 		// this generates a separate chunk (about.[hash].js) for this route
 		// which is lazy-loaded when the route is visited.
 		component: () =>
-			import(/* webpackChunkName: "about" */ "../views/GoOut.vue"),
+			import(/* webpackChunkName: "goout" */ "../views/GoOut.vue"),
 	},
 	{
 		path: "/history",
@@ -26,7 +26,7 @@ const routes = [
 		// this generates a separate chunk (about.[hash].js) for this route
 		// which is lazy-loaded when the route is visited.
 		component: () =>
-			import(/* webpackChunkName: "about" */ "../views/History.vue"),
+			import(/* webpackChunkName: "history" */ "../views/History.vue"),
 	},
 
 	{
@@ -36,14 +36,14 @@ const routes = [
 		// this generates a separate chunk (about.[hash].js) for this route
 		// which is lazy-loaded when the route is visited.
 		component: () =>
-			import(/* webpackChunkName: "about" */ "../views/Account.vue"),
+			import(/* webpackChunkName: "account" */ "../views/Account.vue"),
 	},
 	{
 		path: "/order/:id",
 		name: "Menu",
 		// component: Resturant,
 		component: () =>
-			import(/* webpackChunkName: "about" */ "../views/Menu.vue"),
+			import(/* webpackChunkName: "menu" */ "../views/Menu.vue"),
 	},
 	{
 		path: "/order/:id/book-resturant",
@@ -51,7 +51,7 @@ const routes = [
 		// component: Resturant,
 		component: () =>
 			import(
-				/* webpackChunkName: "about" */ "../views/BookResturant.vue"
+				/* webpackChunkName: "bookresturant" */ "../views/BookResturant.vue"
 			),
 	},
 	{
@@ -59,20 +59,24 @@ const routes = [
 		name: "ConfirmOrder",
 		// component: Resturant,
 		component: () =>
-			import(/* webpackChunkName: "about" */ "../views/ConfirmOrder.vue"),
+			import(
+				/* webpackChunkName: "confirmorder" */ "../views/ConfirmOrder.vue"
+			),
 	},
 	{
 		path: "/history/:id/summary",
 		name: "Summary",
 		component: () =>
-			import(/* webpackChunkName: "about" */ "../views/OrderSummary.vue"),
+			import(
+				/* webpackChunkName: "ordersummary" */ "../views/OrderSummary.vue"
+			),
 	},
 	{
 		path: "/order/:id/order-delivery/",
 		name: "OrderDelivery",
 		component: () =>
 			import(
-				/* webpackChunkName: "about" */ "../views/OrderDelivery.vue"
+				/* webpackChunkName: "orderdelivery" */ "../views/OrderDelivery.vue"
 			),
 	},
 ];

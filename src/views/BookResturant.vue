@@ -5,7 +5,6 @@
 				<v-icon>fas fa-arrow-left</v-icon> </v-btn
 			><span class="text-h6">{{ info.name }}</span>
 		</v-app-bar>
-		<!-- {{ foodItems }} -->
 		<v-skeleton-loader
 			type="image, article, table-heading, list-item-two-line, list-item-two-line, table-tfoot"
 			:loading="loading"
@@ -23,8 +22,7 @@
 			>
 				<template v-slot:parallax>
 					<v-carousel-item v-for="img in info.imgSrc" :key="img">
-						<v-parallax :src="img"></v-parallax>
-						<!-- {{ img }} -->
+						<v-parallax :src="img" height="500"></v-parallax>
 					</v-carousel-item>
 				</template>
 				<template v-slot:desc>
@@ -36,18 +34,24 @@
 					v-for="(item, i) in info.detailReviews"
 					:key="i"
 				>
-					<v-expansion-panel-header class="text-subtitle-1">
-						<v-row align="center" class="spacer" no-gutters>
-							<v-col cols="3">
-								<v-avatar size="36px">
+					<v-expansion-panel-header>
+						<v-row align="center" no-gutters>
+							<v-col class="col-3 col-sm-1">
+								<v-avatar size="32px" class="float-left">
 									<img
 										alt="Avatar"
 										src="https://avatars0.githubusercontent.com/u/9064066?v=4&s=460"
 									/>
 								</v-avatar>
 							</v-col>
-							<v-col cols="9">{{ item.name }}</v-col>
+							<v-col cols="col-9 col-sm-11">
+								<span class="">
+									{{ item.name }}
+								</span>
+							</v-col>
 						</v-row>
+						<v-spacer></v-spacer>
+
 						<template v-slot:actions>
 							<v-rating
 								small
@@ -60,6 +64,22 @@
 					<v-expansion-panel-content>
 						{{ item.review }}
 					</v-expansion-panel-content>
+				</v-expansion-panel>
+				<v-expansion-panel>
+					<v-col class="text-center" cols="12">
+						<v-btn
+							color="green"
+							v-if="!booked"
+							@click="booked = true"
+						>
+							<v-icon class="mr-3">fas fa-table</v-icon>
+							Book a Table
+						</v-btn>
+						<v-btn color="red" v-else @click="booked = false">
+							<v-icon class="mr-3">fas fa-table</v-icon>
+							Canclel Booking
+						</v-btn>
+					</v-col>
 				</v-expansion-panel>
 			</v-expansion-panels>
 		</v-skeleton-loader>
@@ -74,6 +94,7 @@ export default {
 	components: { ResturantBox },
 	data: () => ({
 		Panels: [],
+		booked: false,
 	}),
 	computed: {
 		...mapGetters({
@@ -82,7 +103,6 @@ export default {
 		}),
 	},
 	mounted() {
-		// console.log(this.id);
 		this.calcSelec();
 		this.setDetailResturant(this.$route.params.id);
 	},
