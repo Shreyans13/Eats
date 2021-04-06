@@ -17,6 +17,14 @@ export default {
 			};
 		},
 	},
-	mutations: {},
-	actions: {},
+	mutations: {
+		setAddress(state, payload) {
+			state.userAddress = payload;
+		},
+	},
+	actions: {
+		updateAddress({ commit }, payload) {
+			commit("setAddress", payload);
+		},
+	},
 };
