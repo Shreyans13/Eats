@@ -24,6 +24,7 @@ export default {
 	},
 	actions: {
 		updateAddress({ commit }, payload) {
+			console.log(payload);
 			commit("setAddress", payload);
 		},
 	},

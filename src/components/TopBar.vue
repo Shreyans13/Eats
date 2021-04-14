@@ -5,7 +5,8 @@
 				<v-icon>fas fa-street-view</v-icon>
 			</v-btn>
 
-			<v-app-bar-title>Jamshedpur</v-app-bar-title>
+			<!-- <v-app-bar-title>Jamshedpur</v-app-bar-title> -->
+			<v-toolbar-title class="text-h6"> Jamshedpur </v-toolbar-title>
 
 			<template v-slot:extension>
 				<p>ABC`</p>
