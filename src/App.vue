@@ -5,7 +5,7 @@
 			<router-view />
 		</v-main>
 
-		<bottom-nav v-if="toggleBottomBar" />
+		<bottom-nav v-if="toggleBottomBar" class="hidden-md-and-up" />
 	</v-app>
 </template>
 
@@ -13,16 +13,16 @@
 import BottomNav from "@/components/BottomNav.vue";
 import TopBar from "@/components/TopBar.vue";
 export default {
-	components: { BottomNav, TopBar },
+	components: {
+		BottomNav,
+		TopBar,
+	},
 	name: "App",
-	data: () => ({
-		// TopBarToggleTopBar: true,
-	}),
 	computed: {
 		toggleTopBar() {
 			if (
-				this.$route.name == "History" ||
-				this.$route.name == "Account" ||
+				// this.$route.name == "History" ||
+				// this.$route.name == "Account" ||
 				this.$route.name == "Menu" ||
 				this.$route.name == "BookResturant" ||
 				this.$route.name == "Summary" ||

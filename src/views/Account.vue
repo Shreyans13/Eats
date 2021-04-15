@@ -1,11 +1,6 @@
 <template>
 	<div>
-		<v-app-bar flat app dark fixed>
-			<v-toolbar-title class="text-h6">
-				Account
-			</v-toolbar-title>
-		</v-app-bar>
-		<v-list>
+		<v-list class="mt-3">
 			<v-list-item>
 				<v-list-item-avatar size="50">
 					<v-img :src="getUser.img"></v-img>
