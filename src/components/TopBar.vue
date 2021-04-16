@@ -1,11 +1,13 @@
 <template>
-	<v-card>
-		<v-app-bar app dark fixed flat>
+	<v-card background-color="#121212">
+		<v-app-bar app fixed flat color="#121212">
 			<v-btn icon>
 				<v-icon>fas fa-street-view</v-icon>
 			</v-btn>
 
-			<v-toolbar-title class="text-h6"> Jamshedpur </v-toolbar-title>
+			<v-toolbar-title class="text-h6">
+				{{ getCity }}
+			</v-toolbar-title>
 			<v-spacer />
 			<v-btn
 				class="py-3 mr-3 hidden-md-and-down"
@@ -32,6 +34,7 @@
 
 <script>
 import { mapGetters } from "vuex";
+// import { mapState } from "vuex";
 
 export default {
 	name: "TopBar",
@@ -39,7 +42,7 @@ export default {
 		// activeBtn: "/",
 	}),
 	computed: {
-		...mapGetters(["bottomLink"]),
+		...mapGetters(["bottomLink", "getCity"]),
 	},
 	methods: {
 		navigate(event, link) {

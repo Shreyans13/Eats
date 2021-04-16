@@ -12,6 +12,8 @@
 <script>
 import BottomNav from "@/components/BottomNav.vue";
 import TopBar from "@/components/TopBar.vue";
+import { mapActions } from "vuex";
+
 export default {
 	components: {
 		BottomNav,
@@ -43,6 +45,14 @@ export default {
 				return false;
 			else return true;
 		},
+	},
+	mounted() {
+		this.getUserLocation();
+	},
+	methods: {
+		...mapActions([
+			"getUserLocation", //also supports payload `this.nameOfAction(amount)`
+		]),
 	},
 };
 </script>
