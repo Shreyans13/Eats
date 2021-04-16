@@ -21,7 +21,7 @@
 				}"
 			>
 				<template v-slot:image>
-					<v-carousel-item v-for="img in info.imgSrc" :key="img">
+					<v-carousel-item v-for="(img, id) in info.imgSrc" :key="id">
 						<v-img
 							width="100%"
 							max-height="500px"

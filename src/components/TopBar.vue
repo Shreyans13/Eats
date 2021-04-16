@@ -6,7 +6,7 @@
 			</v-btn>
 
 			<v-toolbar-title class="text-h6">
-				{{ getCity }}
+				{{ getCity == "" ? "Add your Location" : getCity }}
 			</v-toolbar-title>
 			<v-spacer />
 			<v-btn

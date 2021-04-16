@@ -1,7 +1,7 @@
 export default {
 	state: {
 		userName: "Rebecca Ann",
-		userAddress: "Kaka Halwai Estate, Parvati, Parvati, Mumbai",
+		userAddress: "",
 		userEmail: "jw1xf5lyckb@temporary-mail.net",
 		randomPaymentString: "4532259913102589",
 		userLocation: "",

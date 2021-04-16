@@ -56,3 +56,11 @@ export default {
 	},
 };
 </script>
+
+<style>
+@media screen and (max-device-width: 768px) {
+	.v-btn:hover:before {
+		opacity: 0 !important;
+	}
+}
+</style>

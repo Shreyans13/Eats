@@ -17,7 +17,7 @@
 			@click="navigate($event, link)"
 			style="height: max-content"
 		>
-			{{ link.text }}
+			<span>{{ link.text }}</span>
 			<v-icon class="pb-1">{{ link.icon }}</v-icon>
 		</v-btn>
 	</v-bottom-navigation>
@@ -27,15 +27,13 @@ import { mapGetters } from "vuex";
 
 export default {
 	name: "BottomNav",
-	data: () => ({
-		// activeBtn: "/",
-	}),
+	data: () => ({ value: 1 }),
 	computed: {
 		...mapGetters(["bottomLink"]),
 	},
 	methods: {
 		navigate(event, link) {
-			// event.stopPropogation();
+			console.log(event);
 			if (link.to || !link.href) return;
 			this.$vuetify.goTo(link.href);
 		},
