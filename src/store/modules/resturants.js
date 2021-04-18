@@ -46,5 +46,20 @@ export default {
 				});
 			}
 		},
+		postOrder({ getters }) {
+			api.postOrder({ user: getters.getUser, order: getters.getOrder });
+		},
+		bookTable({ getters }) {
+			api.bookTable({
+				user: getters.getUser,
+				resturnat: getters.getDetailResturant,
+			});
+		},
+		unbookTable({ getters }) {
+			api.cancelTable({
+				user: getters.getUser,
+				resturnat: getters.getDetailResturant,
+			});
+		},
 	},
 };

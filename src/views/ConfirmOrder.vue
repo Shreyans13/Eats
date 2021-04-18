@@ -123,7 +123,7 @@
 				<v-btn
 					block
 					color="green"
-					@click="navigate($event, '/order/123/order-delivery')"
+					@click="confirmOrder"
 					to="/order/123/order-delivery"
 					>Confirm Order</v-btn
 				>
@@ -135,6 +135,7 @@
 <script>
 import router from "../router/index";
 import { mapGetters } from "vuex";
+import { mapActions } from "vuex";
 
 export default {
 	name: "ConfirmOrder",
@@ -145,19 +146,6 @@ export default {
 				{ text: "Items Ordered", value: "name", sortable: false },
 				{ text: "Price", value: "price", sortable: false },
 			],
-			// order: [
-			// 	{
-			// 		name: "Paneer Makhani Biryani",
-			// 		quantity: "x3",
-			// 		price: "₹ 50",
-			// 	},
-			// 	{ name: "Dahi Kebab", quantity: "x5", price: "₹ 120" },
-			// 	{
-			// 		name: "Matar Paneer Lababdaar",
-			// 		quantity: "x1",
-			// 		price: "₹ 75",
-			// 	},
-			// ],
 		};
 	},
 	computed: {
@@ -173,8 +161,13 @@ export default {
 		backNavigation() {
 			router.go(-1);
 		},
-		navigate(event, link) {
-			this.$vuetify.goTo(link);
+		// navigate(event, link) {
+		// 	this.$vuetify.goTo(link);
+		// },
+		...mapActions(["postOrder"]),
+		confirmOrder() {
+			console.log("confirmOrder called here");
+			this.postOrder("abc");
 		},
 	},
 };

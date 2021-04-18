@@ -70,12 +70,12 @@
 						<v-btn
 							color="green"
 							v-if="!booked"
-							@click="booked = true"
+							@click="confirmTable"
 						>
 							<v-icon class="mr-3">fas fa-table</v-icon>
 							Book a Table
 						</v-btn>
-						<v-btn color="red" v-else @click="booked = false">
+						<v-btn color="red" v-else @click="cancelTable">
 							<v-icon class="mr-3">fas fa-table</v-icon>
 							Canclel Booking
 						</v-btn>
@@ -107,7 +107,7 @@ export default {
 		this.setDetailResturant(this.$route.params.id);
 	},
 	methods: {
-		...mapActions(["setDetailResturant"]),
+		...mapActions(["setDetailResturant", "bookTable", "unbookTable"]),
 		backNavigation() {
 			router.go(-1);
 		},
@@ -115,6 +115,14 @@ export default {
 			for (let i = 0; i < 5; i++) {
 				this.Panels.push(i);
 			}
+		},
+		confirmTable() {
+			this.booked = true;
+			this.bookTable();
+		},
+		cancelTable() {
+			this.booked = false;
+			this.unbookTable();
 		},
 	},
 };
