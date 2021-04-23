@@ -6,7 +6,7 @@ let resturants = {
 			name: "Yogesh`s Cafe",
 			rating: "4.5",
 			type: "North Crusines",
-			timing: "10:00am",
+			time: "10:00am",
 			rate: "75",
 			id: "123",
 			imgSrc:
@@ -16,7 +16,7 @@ let resturants = {
 			name: "Vtrix`s Cafe",
 			rating: "4.0",
 			type: "South Crusines",
-			timing: "11:00am",
+			time: "11:00am",
 			rate: "100",
 			id: "456",
 			imgSrc:
