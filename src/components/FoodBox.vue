@@ -33,7 +33,7 @@
 					<h4 class="success--text">Rs {{ data.rate }} for one</h4>
 				</v-col>
 			</v-row>
-			<div class="warning--text">Opens at {{ data.timing }}</div>
+			<div class="warning--text">Opens at {{ data.time }}</div>
 		</v-card-text>
 		<!-- <v-divider class="mx-4"></v-divider> -->
 	</v-card>
