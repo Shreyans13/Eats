@@ -1,6 +1,6 @@
 <template>
 	<v-container fluid>
-		<v-card class="mx-auto mb-5" max-width="374">
+		<v-card class="mx-auto mb-5 hidden-md-and-up" max-width="374">
 			<v-img
 				class="white--text align-end"
 				height="200px"
@@ -24,7 +24,11 @@
 		</v-card>
 		<v-skeleton-loader max-width="374" type="card" :loading="loading">
 			<v-row>
-				<v-col v-for="(data, i) in resturants" :key="i">
+				<v-col
+					v-for="(data, i) in resturants"
+					:key="i"
+					class="col-lg-2"
+				>
 					<food-box :data="data" nav="menu" />
 				</v-col>
 			</v-row>

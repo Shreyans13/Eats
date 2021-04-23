@@ -169,27 +169,6 @@ let resturantsDetail = {
 					type: "Chef Specials",
 					list: [
 						{
-							name: "Chole Bhature",
-							price: "50",
-							type: "veg",
-							imgSrc:
-								"https://images.unsplash.com/photo-1475090169767-40ed8d18f67d?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxleHBsb3JlLWZlZWR8Mzd8fHxlbnwwfHx8&auto=format&fit=crop&w=500&q=60",
-						},
-						{
-							name: "Rogan Josh",
-							price: "60",
-							type: "non-veg",
-							imgSrc:
-								"https://images.unsplash.com/photo-1475090169767-40ed8d18f67d?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxleHBsb3JlLWZlZWR8Mzd8fHxlbnwwfHx8&auto=format&fit=crop&w=500&q=60",
-						},
-						{
-							name: "Stuffed Bati",
-							price: "70",
-							type: "veg",
-							imgSrc:
-								"https://images.unsplash.com/photo-1475090169767-40ed8d18f67d?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxleHBsb3JlLWZlZWR8Mzd8fHxlbnwwfHx8&auto=format&fit=crop&w=500&q=60",
-						},
-						{
 							name: "Chicken Dum Biryani",
 							price: "70",
 							type: "non-veg",
@@ -209,10 +188,12 @@ let resturantsDetail = {
 		},
 	],
 };
-for (let i = 0; i < 10; i++) {
+for (let i = 0; i < 20; i++) {
 	let id = faker.datatype.uuid();
 	let name = faker.company.companyName();
 	let rating = faker.datatype.number(5);
+	// let imgSrc = "https://source.unsplash.com/1600x900/?food,random";
+	let imgSrc = "https://picsum.photos/1600/900?random=" + i;
 	resturants.data.push({
 		name: name,
 		rating: rating,
@@ -220,7 +201,7 @@ for (let i = 0; i < 10; i++) {
 		time: "11:00am",
 		rate: faker.datatype.number(1000),
 		id: id,
-		imgSrc: "https://source.unsplash.com/1600x900/?food",
+		imgSrc: imgSrc,
 	});
 	resturantsDetail.data.push({
 		id: id,
@@ -282,27 +263,6 @@ for (let i = 0; i < 10; i++) {
 			{
 				type: "Chef Specials",
 				list: [
-					{
-						name: "Chole Bhature",
-						price: "50",
-						type: "veg",
-						imgSrc:
-							"https://images.unsplash.com/photo-1475090169767-40ed8d18f67d?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxleHBsb3JlLWZlZWR8Mzd8fHxlbnwwfHx8&auto=format&fit=crop&w=500&q=60",
-					},
-					{
-						name: "Rogan Josh",
-						price: "60",
-						type: "non-veg",
-						imgSrc:
-							"https://images.unsplash.com/photo-1475090169767-40ed8d18f67d?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxleHBsb3JlLWZlZWR8Mzd8fHxlbnwwfHx8&auto=format&fit=crop&w=500&q=60",
-					},
-					{
-						name: "Stuffed Bati",
-						price: "70",
-						type: "veg",
-						imgSrc:
-							"https://images.unsplash.com/photo-1475090169767-40ed8d18f67d?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxleHBsb3JlLWZlZWR8Mzd8fHxlbnwwfHx8&auto=format&fit=crop&w=500&q=60",
-					},
 					{
 						name: "Chicken Dum Biryani",
 						price: "70",

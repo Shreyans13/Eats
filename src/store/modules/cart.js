@@ -1,7 +1,6 @@
 // import api from "../../api/index";
-
-export default {
-	state: {
+const defaultState = () => {
+	return {
 		resturantName: "",
 		resturantAdress: "",
 		resturantImg: "",
@@ -10,7 +9,10 @@ export default {
 		totalPrice: Number,
 		totalQuantity: Number,
 		deliveryCharges: Number,
-	},
+	};
+};
+export default {
+	state: defaultState,
 	getters: {
 		getCart: (state) => state.cart,
 		getName: (state) => state.resturantName,
@@ -51,6 +53,9 @@ export default {
 		setResturantImage(state, payload) {
 			state.resturantImg = payload;
 		},
+		resetState(state) {
+			Object.assign(state, defaultState());
+		},
 	},
 	actions: {
 		updateCart({ commit }, payload) {
@@ -76,6 +81,10 @@ export default {
 		},
 		updateResturantImage({ commit }, payload) {
 			commit("setResturantImage", payload);
+		},
+		updateState({ commit }) {
+			console.log("ustate");
+			commit("resetState");
 		},
 	},
 };

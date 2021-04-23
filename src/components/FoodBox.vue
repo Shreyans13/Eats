@@ -1,5 +1,5 @@
 <template>
-	<v-card max-width="374" @click="navigate()">
+	<v-card max-width="374" @click="navigate(), updateState()">
 		<v-img height="150" :src="data.imgSrc" :lazy-src="data.imgSrc">
 			<template v-slot:placeholder>
 				<v-row class="fill-height ma-0" align="center" justify="center">
@@ -11,7 +11,12 @@
 			</template>
 		</v-img>
 		<v-card-title>
-			{{ data.name }}
+			<span
+				class="d-inline-block text-truncate"
+				style="max-width: 225px;"
+			>
+				{{ data.name }}
+			</span>
 			<v-row class="justify-end">
 				<v-btn icon color="amber">
 					<v-icon small>fas fa-star</v-icon>
@@ -30,16 +35,19 @@
 			</v-row>
 			<div class="warning--text">Opens at {{ data.timing }}</div>
 		</v-card-text>
-		<v-divider class="mx-4"></v-divider>
+		<!-- <v-divider class="mx-4"></v-divider> -->
 	</v-card>
 </template>
 
 <script>
 import router from "../router/index";
+import { mapActions } from "vuex";
+
 export default {
 	name: "FoodBox",
 	props: ["data", "nav"],
 	methods: {
+		...mapActions(["updateState"]),
 		navigate() {
 			// this.$vuetify.goTo(link);
 			if (this.nav === "menu")

@@ -2,7 +2,9 @@ const resturants = require("../fakeData/resturants").default.resturants;
 const resturantsDetail = require("../fakeData/resturants").default
 	.resturantsDetail;
 
-let getResturants = () => {
+let history = [];
+
+const getResturants = () => {
 	return new Promise((resolve) => {
 		setTimeout(function() {
 			resolve(resturants);
@@ -10,7 +12,7 @@ let getResturants = () => {
 	});
 };
 
-let getResturantsDetail = (id) => {
+const getResturantsDetail = (id) => {
 	return new Promise((resolve) => {
 		setTimeout(function() {
 			resolve({
@@ -20,23 +22,34 @@ let getResturantsDetail = (id) => {
 	});
 };
 
-let postOrder = (order) => {
-	console.log("OrderPosted");
-	console.log(order);
+const getHistory = () => {
+	return new Promise((resolve) => {
+		setTimeout(() => {
+			resolve(history);
+		}, 1000);
+	});
 };
 
-let bookTable = (details) => {
+const postOrder = (order) => {
+	console.log("OrderPosted");
+	console.log(order);
+	history.push(order);
+	console.log(history);
+};
+
+const bookTable = (details) => {
 	console.log("TableBooked");
 	console.log(details);
 };
 
-let cancelTable = (details) => {
+const cancelTable = (details) => {
 	console.log("TableCanceled");
 	console.log(details);
 };
 export default {
 	getResturantsDetail,
 	getResturants,
+	getHistory,
 	postOrder,
 	bookTable,
 	cancelTable,
