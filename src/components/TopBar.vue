@@ -22,11 +22,14 @@
 				<span>{{ link.text }}</span>
 			</v-btn>
 
-			<template v-slot:extension>
+			<template v-slot:extension v-if="toggleSearchBar">
 				<v-text-field
 					label="Search Resturant"
 					append-icon="fab fa-searchengin"
+					v-model="searchQuery"
+					@change="setSearchQuery(searchQuery)"
 				></v-text-field>
+				
 			</template>
 		</v-app-bar>
 	</v-card>
@@ -34,17 +37,24 @@
 
 <script>
 import { mapGetters } from "vuex";
-// import { mapState } from "vuex";
+import { mapActions } from "vuex";
 
 export default {
 	name: "TopBar",
 	data: () => ({
+		searchQuery : ""
 		// activeBtn: "/",
 	}),
 	computed: {
 		...mapGetters(["bottomLink", "getCity"]),
+		toggleSearchBar() {
+			if (this.$route.name == "Order" || this.$route.name == "Go Out")
+				return true;
+			return false;
+		},
 	},
 	methods: {
+		...mapActions(["setSearchQuery"]),
 		navigate(event, link) {
 			// event.stopPropogation();
 			if (link.to || !link.href) return;

@@ -282,8 +282,8 @@ for (let i = 0; i < 20; i++) {
 		],
 	});
 }
-console.log(resturants.data);
+// console.log(resturants.data);
 // let  = {
-console.log(resturantsDetail);
+// console.log(resturantsDetail);
 
 export default { resturants, resturantsDetail };

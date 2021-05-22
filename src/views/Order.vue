@@ -27,7 +27,7 @@
 				<v-col
 					v-for="(data, i) in resturants"
 					:key="i"
-					class="col-lg-2"
+					class="col-lg-3"
 				>
 					<food-box :data="data" nav="menu" />
 				</v-col>
@@ -41,6 +41,9 @@ import { mapActions, mapGetters } from "vuex";
 
 export default {
 	components: { FoodBox },
+	// data: () => ({
+	// 	searchQuery : ""
+	// }),
 	name: "Order",
 	computed: {
 		...mapGetters({ loading: "loading", resturants: "getResturants" }),
