@@ -1,12 +1,17 @@
+import api from "../../api/index";
+
 export default {
 	state: {
+		isAuthenticated : false,
 		userName: "Rebecca Ann",
 		userAddress: "",
 		userEmail: "jw1xf5lyckb@temporary-mail.net",
 		randomPaymentString: "4532259913102589",
 		userLocation: "",
+		phoneNumber: Number,
+		password : String,
 		userImg:
-			"https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixid=MXwxMjA3fDB8MHxzZWFyY2h8Mnx8dXNlcnxlbnwwfHwwfA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
+			"https://image.shutterstock.com/image-vector/user-simple-vector-icon-illustration-600w-1765573355.jpg",
 	},
 	getters: {
 		getUser: (state) => {
@@ -16,11 +21,13 @@ export default {
 				raPaSy: state.randomPaymentString,
 				img: state.userImg,
 				loc: state.userLocation,
+				phoneNumber: state.phoneNumber
 			};
 		},
 		getCity: (state) => {
 			return state.userLocation;
 		},
+		getAuthentication: (state) => state.isAuthenticated
 	},
 	mutations: {
 		setAddress(state, payload) {
@@ -30,6 +37,24 @@ export default {
 			console.log(payload);
 			state.userLocation = payload;
 		},
+		setUserData(state, payload) {
+			state.userName = payload.name;
+			state.userAddress= payload.address;
+			state.userEmail = payload.email;
+			state.userLocation = payload.city;
+			state.phoneNumber = payload.phoneNumber;
+			state.password = payload.password;
+			state.isAuthenticated = true;
+		},
+		unsetUserData(state) {
+			state.userName = ""
+			state.userAddress= "";
+			state.userEmail = "";
+			state.userLocation = "";
+			state.phoneNumber = "";
+			state.password = "word";
+			state.isAuthenticated = false;
+		}
 	},
 	actions: {
 		updateAddress({ commit }, payload) {
@@ -58,5 +83,13 @@ export default {
 				);
 			}
 		},
+		updateUserData({commit}, payload) {
+			commit("setUserData", payload);
+			api.signUpUser(payload)
+		},
+		deleteUserData({commit}) {
+			commit("unsetUserData")
+			api.logout()
+		}
 	},
 };

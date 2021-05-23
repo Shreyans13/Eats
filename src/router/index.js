@@ -1,6 +1,7 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
 import Order from "@/views/Order.vue";
+import store from "@/store/index.js";
 // import Resturant from "@/views/Resturant.vue";
 Vue.use(VueRouter);
 
@@ -9,10 +10,16 @@ const routes = [
 		path: "/",
 		name: "Order",
 		component: Order,
+		meta: {
+			requiresAuth: false
+		},
 	},
 	{
 		path: "/go-out",
 		name: "Go Out",
+		meta: {
+			requiresAuth: false
+		},
 		// route level code-splitting
 		// this generates a separate chunk (about.[hash].js) for this route
 		// which is lazy-loaded when the route is visited.
@@ -22,6 +29,9 @@ const routes = [
 	{
 		path: "/history",
 		name: "History",
+		meta: {
+			requiresAuth: true
+		},
 		// route level code-splitting
 		// this generates a separate chunk (about.[hash].js) for this route
 		// which is lazy-loaded when the route is visited.
@@ -32,6 +42,9 @@ const routes = [
 	{
 		path: "/account",
 		name: "Account",
+		meta: {
+			requiresAuth: true
+		},
 		// route level code-splitting
 		// this generates a separate chunk (about.[hash].js) for this route
 		// which is lazy-loaded when the route is visited.
@@ -41,6 +54,9 @@ const routes = [
 	{
 		path: "/order/:id",
 		name: "Menu",
+		meta: {
+			requiresAuth: true
+		},
 		// component: Resturant,
 		component: () =>
 			import(/* webpackChunkName: "menu" */ "../views/Menu.vue"),
@@ -48,6 +64,9 @@ const routes = [
 	{
 		path: "/order/:id/book-resturant",
 		name: "BookResturant",
+		meta: {
+			requiresAuth: true
+		},
 		// component: Resturant,
 		component: () =>
 			import(
@@ -57,6 +76,9 @@ const routes = [
 	{
 		path: "/order/:id/confirm-order",
 		name: "ConfirmOrder",
+		meta: {
+			requiresAuth: true
+		},
 		// component: Resturant,
 		component: () =>
 			import(
@@ -66,6 +88,9 @@ const routes = [
 	{
 		path: "/history/:id/summary",
 		name: "Summary",
+		meta: {
+			requiresAuth: true
+		},
 		component: () =>
 			import(
 				/* webpackChunkName: "ordersummary" */ "../views/OrderSummary.vue"
@@ -74,17 +99,20 @@ const routes = [
 	{
 		path: "/order/:id/order-delivery/",
 		name: "OrderDelivery",
+		meta: {
+			requiresAuth: true
+		},
 		component: () =>
 			import(
 				/* webpackChunkName: "orderdelivery" */ "../views/OrderDelivery.vue"
 			),
 	},
 	{
-		path: "/signup",
-		name: "Sign Up",
+		path: "/new-user",
+		name: "Register",
 		component: () =>
 		import(
-			/* webpackChunkName: "signup" */ "../views/SignUp.vue"
+			/* webpackChunkName: "register" */ "../views/Register.vue"
 		),
 	}
 ];
@@ -99,5 +127,8 @@ const router = new VueRouter({
 		}
 	},
 });
-
+router.beforeEach((to, from, next) => {
+	if (to.matched.some(record => record.meta.requiresAuth) && !store.getters.getAuthentication ) next({ name: 'Register' })
+  	else next()
+})
 export default router;

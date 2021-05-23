@@ -46,6 +46,15 @@ const cancelTable = (details) => {
 	console.log("TableCanceled");
 	console.log(details);
 };
+
+const signUpUser = user => {
+	console.log("User Signed Up")
+	console.log(user)
+}
+
+const logout = () => {
+	console.log("Loged Out")
+}
 export default {
 	getResturantsDetail,
 	getResturants,
@@ -53,4 +62,6 @@ export default {
 	postOrder,
 	bookTable,
 	cancelTable,
+	signUpUser,
+	logout
 };
