@@ -20,6 +20,6 @@ git commit -m 'test-run'
 # git push -f git@github.com:<USERNAME>/<USERNAME>.github.io.git master
 
 # if you are deploying to https://<USERNAME>.github.io/<REPO>
-git push -f https://github.com/Shreyans13/studious-octo-rotary-phone.git master:gh-pages
+git push -f https://github.com/Shreyans13/octo-rotary-phone.git master:gh-pages
 
 cd -
