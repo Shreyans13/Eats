@@ -6,7 +6,7 @@ import cart from "./modules/cart";
 import user from "./modules/user";
 
 Vue.use(Vuex);
-
+// console.log(user.state.isAuthenticated)
 export default new Vuex.Store({
 	state: {
 		items: [
@@ -16,7 +16,10 @@ export default new Vuex.Store({
 				icon: "fas fa-shopping-bag",
 				meta: {
 					showToolbar: true,
-					showBottomNav: true,
+					// showBottomNav: true,
+					showBottomNav: () => {
+						return true
+					},
 				},
 			},
 			{
@@ -25,7 +28,10 @@ export default new Vuex.Store({
 				icon: "fas fa-shoe-prints",
 				meta: {
 					showToolbar: false,
-					showBottomNav: true,
+					// showBottomNav: true,
+					showBottomNav: () => {
+						return true
+					},
 				},
 			},
 			{
@@ -34,7 +40,13 @@ export default new Vuex.Store({
 				icon: "fas fa-utensils",
 				meta: {
 					showToolbar: true,
-					showBottomNav: true,
+					// showBottomNav: true,
+					showBottomNav: () => {
+						// console.log(user)
+						if (user.state.isAuthenticated)
+						return true;
+						else return false
+					},
 				},
 			},
 			{
@@ -43,7 +55,28 @@ export default new Vuex.Store({
 				icon: "mdi-account-child-circle",
 				meta: {
 					showToolbar: true,
-					showBottomNav: true,
+					// showBottomNav: true,
+					showBottomNav: () => {
+						// console.log(user)
+						if (user.state.isAuthenticated)
+						return true;
+						else return false
+					},
+				},
+			},
+			{
+				text: "SignUp / Login",
+				to: "/new-user",
+				icon: "fas fa-sign-in-alt",
+				meta: {
+					showToolbar: true,
+					// showBottomNav: true,
+					showBottomNav: () => {
+						// console.log(user)
+						if (user.state.isAuthenticated)
+						return false;
+						else return true;
+					},
 				},
 			},
 		],
@@ -54,7 +87,7 @@ export default new Vuex.Store({
 		appBarLinks: (state) =>
 			state.items.filter((link) => link.meta.showToolbar === true),
 		bottomLink: (state) =>
-			state.items.filter((link) => link.meta.showBottomNav === true),
+			state.items.filter((link) => link.meta.showBottomNav() === true),
 		theme: (state) => state.theme,
 		loading: (state) => state.loading,
 	},

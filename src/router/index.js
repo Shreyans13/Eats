@@ -128,7 +128,9 @@ const router = new VueRouter({
 	},
 });
 router.beforeEach((to, from, next) => {
-	if (to.matched.some(record => record.meta.requiresAuth) && !store.getters.getAuthentication ) next({ name: 'Register' })
+	console.log(to.name)
+	if (to.name === "Register" && store.getters.getAuthentication) next({ name: 'Account'})
+	else if (to.matched.some(record => record.meta.requiresAuth) && !store.getters.getAuthentication ) next({ name: 'Register' })
   	else next()
 })
 export default router;

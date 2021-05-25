@@ -23,24 +23,24 @@ export default {
 	computed: {
 		toggleTopBar() {
 			if (
-				// this.$route.name == "History" ||
-				// this.$route.name == "Account" ||
-				this.$route.name == "Menu" ||
-				this.$route.name == "BookResturant" ||
-				this.$route.name == "Summary" ||
-				this.$route.name == "ConfirmOrder" ||
-				this.$route.name == "OrderDelivery"
+				this.$route.name == ("Menu" || "BookResturant" || "Summary" || "ConfirmOrder" || "OrderDelivery")
+				// this.$route.name == "Menu" ||
+				// this.$route.name == "BookResturant" ||
+				// this.$route.name == "Summary" ||
+				// this.$route.name == "ConfirmOrder" ||
+				// this.$route.name == "OrderDelivery"
 			)
 				return false;
 			return true;
 		},
 		toggleBottomBar() {
 			if (
-				this.$route.name == "Menu" ||
-				this.$route.name == "BookResturant" ||
-				this.$route.name == "Summary" ||
-				this.$route.name == "ConfirmOrder" ||
-				this.$route.name == "OrderDelivery"
+				this.$route.name == ( "Menu" || "BookResturant" || "Summary" || "ConfirmOrder" || "OrderDelivery")
+				// this.$route.name == "Menu" ||
+				// this.$route.name == "BookResturant" ||
+				// this.$route.name == "Summary" ||
+				// this.$route.name == "ConfirmOrder" ||
+				// this.$route.name == "OrderDelivery"
 			)
 				return false;
 			else return true;
