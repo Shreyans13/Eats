@@ -81,32 +81,16 @@
 				</v-expansion-panel-content>
 			</v-expansion-panel>
 		</v-expansion-panels>
-
-		<v-expansion-panels class="mt-5">
-		<v-expansion-panel>
-		<v-expansion-panel-header>
-		<v-list-item>
-						<v-list-item-icon>
-							<v-icon small>fas fa-sign-out-alt</v-icon>
-						</v-list-item-icon>
-						<v-list-item-content>
-							<v-list-item-title>
-								Logout
-							</v-list-item-title>
-						</v-list-item-content>
-					</v-list-item>
-		</v-expansion-panel-header>
-					<v-expansion-panel-content>
-					<v-btn @click="logout"> Logout</v-btn>
-					</v-expansion-panel-content>
-		</v-expansion-panel>
-		</v-expansion-panels>
+		<v-container fluid>
+		<v-btn @click="logout" block color="error">
+			<v-icon small class="mr-3">fas fa-sign-out-alt</v-icon>
+			Logout</v-btn>
+		</v-container>
 	</div>
 </template>
 
 <script>
-import { mapGetters } from "vuex";
-import { mapActions } from "vuex";
+import { mapGetters, mapActions } from "vuex";
 import router from "../router/index";
 
 export default {
@@ -177,8 +161,8 @@ export default {
 		},
 		logout() {
 			this.deleteUserData();
-    		router.push({ name: "Register"});
-		}
+			router.push({ name: "Register" });
+		},
 	},
 };
 </script>

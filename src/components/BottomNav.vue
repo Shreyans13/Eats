@@ -5,7 +5,7 @@
 		grow
 		app
 		height="auto"
-		class="py-0"
+		class="py-0 mt-3"
 		background-color="#121212"
 	>
 		<v-btn

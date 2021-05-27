@@ -74,7 +74,7 @@
         ></v-text-field>
       </validation-provider>
 
-      <v-btn class="mr-4 mt-3" type="submit" :disabled="invalid" block elevation="3"> Sign Up </v-btn>
+      <v-btn color="success" class="mr-4 mt-3" type="submit" :disabled="invalid" block elevation="3"> Sign Up </v-btn>
     </form>
   </validation-observer>
 </template>
@@ -127,12 +127,12 @@ export default {
     ValidationObserver,
   },
   data: () => ({
-    name: "",
-    phoneNumber: "",
-    email: "",
-    address: "",
-    city: "",
-    password: "",
+    name: "Shreyans Jain",
+    phoneNumber: "1234567890",
+    email: "shreyans@eats.com",
+    address: "Jamshedpur",
+    city: "Jamshedpur",
+    password: "Qwerty@1234",
     show1: false,
   }),
 

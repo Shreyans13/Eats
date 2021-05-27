@@ -47,7 +47,7 @@
 
       
 
-      <v-btn class="mr-4 mt-3" type="submit" :disabled="invalid" block elevation="3">Log In </v-btn>
+      <v-btn class="mr-4 mt-3" type="submit" :disabled="invalid" block elevation="3" color="success">Log In </v-btn>
     </form>
   </validation-observer>
 </template>
