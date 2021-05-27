@@ -1,4 +1,5 @@
 # Eats
+A UI/UX design for a Food delivery application based on a real life scenario. 
 
 ## Screenshots
 
