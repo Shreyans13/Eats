@@ -1,4 +1,4 @@
-# zomato-ui
+# eats
 
 ## Project setup
 ```
