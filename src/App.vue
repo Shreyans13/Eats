@@ -26,7 +26,7 @@ export default {
         this.$route.name == "Menu" ||
         this.$route.name == "BookResturant" ||
         this.$route.name == "Summary" ||
-        this.$route.name == "ConfirmOrder" ||
+        // this.$route.name == "ConfirmOrder" ||
         this.$route.name == "OrderDelivery"
       )
         return false;
