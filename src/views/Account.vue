@@ -1,5 +1,5 @@
 <template>
-  <div class="mb-3">
+  <div class="mb-5">
     <v-list class="mt-3">
       <v-list-item>
         <v-list-item-avatar size="50">
