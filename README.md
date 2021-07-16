@@ -70,6 +70,6 @@ This project is implemented in Vue.js, Vuetify, VueRouter, Vuex and PWA.
 
 
 ## Facing Any Problem or need any Help:grey_question:
-Incase you need any problem or need any help write me in [issues](https://github.com/Shreyans13/Eats/issues) section. 
+Incase you face any problem or need any help write me in [issues](https://github.com/Shreyans13/Eats/issues) section. 
 
 
