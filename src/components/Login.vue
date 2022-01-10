@@ -13,22 +13,6 @@
           required
         ></v-text-field>
       </validation-provider>
-<validation-provider
-        v-slot="{ errors }"
-        name="phoneNumber"
-        :rules="{
-          required: true,
-          digits: 10,
-        }"
-      >
-        <v-text-field
-          v-model="phoneNumber"
-          :counter="10"
-          :error-messages="errors"
-          label="Phone Number"
-          required
-        ></v-text-field>
-      </validation-provider>
       <validation-provider
         v-slot="{ errors }"
         name="password"
@@ -45,9 +29,15 @@
         ></v-text-field>
       </validation-provider>
 
-      
-
-      <v-btn class="mr-4 mt-3" type="submit" :disabled="invalid" block elevation="3" color="success">Log In </v-btn>
+      <v-btn
+        class="mr-4 mt-3"
+        type="submit"
+        :disabled="invalid"
+        block
+        elevation="3"
+        color="success"
+        >Log In
+      </v-btn>
     </form>
   </validation-observer>
 </template>
@@ -98,7 +88,6 @@ export default {
     ValidationObserver,
   },
   data: () => ({
-    phoneNumber: "",
     email: "",
     password: "",
     show1: false,

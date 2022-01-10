@@ -39,23 +39,6 @@
         ></v-text-field>
       </validation-provider>
 
-      <validation-provider
-        v-slot="{ errors }"
-        name="phoneNumber"
-        :rules="{
-          required: true,
-          digits: 10,
-        }"
-      >
-        <v-text-field
-          v-model="phoneNumber"
-          :counter="10"
-          :error-messages="errors"
-          label="Phone Number"
-          required
-        ></v-text-field>
-      </validation-provider>
-
       <validation-provider v-slot="{ errors }" name="address" rules="required">
         <v-text-field
           v-model="address"
@@ -74,7 +57,16 @@
         ></v-text-field>
       </validation-provider>
 
-      <v-btn color="success" class="mr-4 mt-3" type="submit" :disabled="invalid" block elevation="3"> Sign Up </v-btn>
+      <v-btn
+        color="success"
+        class="mr-4 mt-3"
+        type="submit"
+        :disabled="invalid"
+        block
+        elevation="3"
+      >
+        Sign Up
+      </v-btn>
     </form>
   </validation-observer>
 </template>
@@ -82,7 +74,7 @@
 <script>
 import { required, digits, email, max, regex } from "vee-validate/dist/rules";
 import { extend, ValidationObserver, ValidationProvider } from "vee-validate";
-import { mapActions } from 'vuex';
+import { mapActions } from "vuex";
 import router from "../router/index";
 
 extend("digits", {
@@ -128,7 +120,6 @@ export default {
   },
   data: () => ({
     name: "Shreyans Jain",
-    phoneNumber: "1234567890",
     email: "shreyans@eats.com",
     address: "Jamshedpur",
     city: "Jamshedpur",
@@ -137,20 +128,19 @@ export default {
   }),
 
   methods: {
-      ...mapActions([
-            'updateUserData', //also supports payload `this.nameOfAction(amount)` 
-        ]),
+    ...mapActions([
+      "updateUserData", //also supports payload `this.nameOfAction(amount)`
+    ]),
     submit() {
       this.$refs.observer.validate();
       this.updateUserData({
-          name: this.name,
-          phoneNumber: this.phoneNumber,
-          email: this.email,
-          address: this.address,
-          city: this.city,
-          password: this.password,
-      })
-    router.push({ name: "Order"});
+        name: this.name,
+        email: this.email,
+        address: this.address,
+        city: this.city,
+        password: this.password,
+      });
+      router.push({ name: "Order" });
     },
   },
 };
