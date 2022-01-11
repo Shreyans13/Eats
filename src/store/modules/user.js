@@ -11,6 +11,7 @@ export default {
     password: String,
     userImg:
       "https://image.shutterstock.com/image-vector/user-simple-vector-icon-illustration-600w-1765573355.jpg",
+    jwtToken: "",
   },
   getters: {
     getUser: (state) => {
