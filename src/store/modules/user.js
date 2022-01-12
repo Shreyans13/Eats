@@ -1,5 +1,3 @@
-import api from "../../api/index";
-
 export default {
   state: {
     isAuthenticated: false,
@@ -36,13 +34,12 @@ export default {
       console.log(payload);
       state.userLocation = payload;
     },
-    setUserData(state, payload) {
-      state.userName = payload.name;
-      state.userAddress = payload.address;
-      state.userEmail = payload.email;
-      state.userLocation = payload.city;
-      state.password = payload.password;
-      state.isAuthenticated = true;
+    setUserData(state, { name, address, email, location, password }) {
+      if (name) state.userName = name;
+      if (address) state.userAddress = address;
+      if (email) state.userEmail = email;
+      if (location) state.userLocation = location;
+      if (password) state.password = password;
     },
     unsetUserData(state) {
       state.userName = "";
@@ -79,14 +76,6 @@ export default {
           (error) => console.log(error)
         );
       }
-    },
-    updateUserData({ commit }, payload) {
-      commit("setUserData", payload);
-      api.signUpUser(payload);
-    },
-    deleteUserData({ commit }) {
-      commit("unsetUserData");
-      api.logout();
     },
   },
 };

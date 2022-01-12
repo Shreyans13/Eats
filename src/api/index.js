@@ -1,8 +1,40 @@
 const resturants = require("../fakeData/resturants").default.resturants;
 const resturantsDetail = require("../fakeData/resturants").default
   .resturantsDetail;
+import Endpoints from "./endpoints";
+const axios = require("axios");
 
 let history = [];
+const apiCall = (endpoint, payload) => {
+  const resp = axios({
+    method: "post",
+    url: endpoint,
+    headers: {
+      "Content-Type": "application/json",
+    },
+    data: JSON.stringify(payload),
+  })
+    .then(function(response) {
+      return JSON.stringify(response.data);
+    })
+    .catch(function(error) {
+      console.log(error);
+      return error;
+    });
+  return resp;
+};
+
+const triggerOTP = (email) => {
+  const response = apiCall(Endpoints.email.trigger, {
+    email: email,
+  });
+  return response;
+};
+const signUpUser = (user) => {
+  console.log(user);
+  console.log(Endpoints.email.trigger);
+  // apiCall(Endpoints.email.trigger);
+};
 
 const getResturants = () => {
   return new Promise((resolve) => {
@@ -47,22 +79,12 @@ const cancelTable = (details) => {
   console.log(details);
 };
 
-const signUpUser = (user) => {
-  console.log("User Signed Up");
-  // {
-  //     "name": "Shreyans Jain",
-  //     "email": "shreyans@eats.com",
-  //     "address": "Jamshedpur",
-  //     "city": "Jamshedpur",
-  //     "password": "Qwerty@1234"
-  // }
-  console.log(user);
-};
-
 const logout = () => {
   console.log("Loged Out");
 };
 export default {
+  triggerOTP,
+
   getResturantsDetail,
   getResturants,
   getHistory,

@@ -2,7 +2,7 @@
   <div class="mt-3">
     <div v-show="box === 'EMAIL'">
       <validation-observer ref="observer" v-slot="{ invalid }">
-        <form @submit.prevent="change">
+        <form @submit.prevent="trigger">
           <validation-provider
             v-slot="{ errors }"
             name="email"
@@ -15,7 +15,6 @@
               required
             ></v-text-field>
           </validation-provider>
-
           <v-btn
             color="success"
             class="mr-4 mt-3"
@@ -23,6 +22,8 @@
             :disabled="invalid"
             block
             elevation="3"
+            :loading="loading"
+            @click="loading = true"
           >
             Send OTP
           </v-btn>
@@ -31,7 +32,7 @@
     </div>
     <div v-show="box === 'OTP'">
       <validation-observer ref="observer" v-slot="{ invalid }">
-        <form @submit.prevent="change">
+        <form @submit.prevent="verify">
           <validation-provider
             v-slot="{ errors }"
             name="otp"
@@ -74,7 +75,7 @@
         </v-btn>
       </div>
       <validation-observer ref="observer" v-slot="{ invalid }">
-        <form @submit.prevent="submit">
+        <form @submit.prevent="signUpUser">
           <validation-provider v-slot="{ errors }" name="Name" rules="required">
             <v-text-field
               v-model="name"
@@ -83,7 +84,6 @@
               required
             ></v-text-field>
           </validation-provider>
-
           <validation-provider
             v-slot="{ errors }"
             name="email"
@@ -96,7 +96,6 @@
               required
             ></v-text-field>
           </validation-provider>
-
           <validation-provider
             v-slot="{ errors }"
             name="password"
@@ -192,7 +191,7 @@ export default {
   },
   data: () => ({
     name: "",
-    email: "shreyans1313@gmail.com",
+    email: "vabusi@ryteto.me",
     address: "",
     city: "",
     password: "asdfA234@",
@@ -200,13 +199,31 @@ export default {
     show1: false,
     box: "EMAIL",
     show2: false,
+    loading: false,
   }),
 
   methods: {
     ...mapActions([
-      "updateUserData", //also supports payload `this.nameOfAction(amount)`
+      "updateUserData",
+      "triggerOTP",
+      "verifyOTP", //also supports payload `this.nameOfAction(amount)`
     ]),
-    submit() {
+    trigger() {
+      this.triggerOTP(this.email)
+        .then((r) => {
+          console.log(r);
+          this.loading = false;
+          this.box = "OTP";
+        })
+        .catch((error) => {
+          console.error(error);
+        });
+    },
+    verify() {
+      this.verifyOTP(this.otp);
+      this.box = "CREATE";
+    },
+    signUpUser() {
       this.$refs.observer.validate();
       this.updateUserData({
         name: this.name,

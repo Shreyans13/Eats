@@ -1,12 +1,14 @@
 import Vue from "vue";
 import Vuex from "vuex";
 
-import resturants from "./modules/resturants";
+import shop from "./modules/shop";
 import cart from "./modules/cart";
 import user from "./modules/user";
 
+import { apiAction } from "./apiActions";
+console.log(apiAction);
 Vue.use(Vuex);
-// console.log(user.state.isAuthenticated)
+
 export default new Vuex.Store({
   state: {
     items: [
@@ -93,9 +95,9 @@ export default new Vuex.Store({
       state.loading = payload;
     },
   },
-  actions: {},
+  actions: apiAction,
   modules: {
-    resturants,
+    shop,
     cart,
     user,
   },

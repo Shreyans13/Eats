@@ -1,4 +1,3 @@
-// import api from "../../api/index";
 const defaultState = () => {
   return {
     resturantName: "",
