@@ -194,11 +194,11 @@ export default {
   },
   data: () => ({
     name: "",
-    email: "vabusi@ryteto.me",
+    email: "jalixife@ryteto.me",
     address: "",
     city: "",
     password: "asdfA234@",
-    otp: "123123",
+    otp: "111111",
     show1: false,
     box: "EMAIL",
     show2: false,
@@ -211,6 +211,9 @@ export default {
     ...mapActions(["updateUserData", "triggerOTP", "verifyOTP"]),
 
     trigger() {
+      this.updateUserData({
+        email: this.email,
+      });
       this.triggerOTP(this.email).then((status) => {
         console.log(status);
         if (status === "SUCCESS") {
@@ -220,8 +223,14 @@ export default {
       });
     },
     verify() {
-      this.verifyOTP(this.otp);
-      this.box = "CREATE";
+      this.verifyOTP(this.otp).then((status) => {
+        console.log(status);
+        if (status === "SUCCESS") {
+          console.log("CREATE");
+          this.box = "CREATE";
+        }
+      });
+      // this.box = "CREATE";
     },
     signUpUser() {
       this.$refs.observer.validate();

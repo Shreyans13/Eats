@@ -34,12 +34,38 @@ export const apiAction = {
       });
   },
   // ---------------------------------------------------------------------------------
-  verifyOTP({ commit }, payload) {
-    console.log(commit);
-    console.log(payload);
+  verifyOTP({ state, commit }, otp) {
+    commit("toggleLoading", true);
+    console.log("state");
+    console.log(state.user.userEmail);
+    return API.verifyOTP({
+      otp: otp,
+      verification_key: STORAGE.getOTPSessionToken(),
+      check: state.user.userEmail,
+    })
+      .then((response) => {
+        console.log(response);
+        // STORAGE.setOTPSessionToken(response.data);
+        commit("apiSuccess");
+        return "SUCCESS";
+      })
+      .catch((error) => {
+        const err = error.toJSON();
+        console.log(err);
+        commit("apiFailure", {
+          statusCode: error.response.status,
+          error: err.name,
+          errorMessage: error.response.data.error
+            ? error.response.data.error
+            : err.message,
+        });
+        return "FAILURE";
+      });
   },
   updateUserData({ commit }, payload) {
-    commit("setUserData", { name: "shreyans" });
+    console.log("updateUserData");
+    console.log(payload);
+    commit("setUserData", payload);
     API.signUpUser(payload);
   },
   setResturants({ commit, state }) {

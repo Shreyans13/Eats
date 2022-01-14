@@ -3,7 +3,7 @@ export default {
     isAuthenticated: false,
     userName: "Rebecca Ann",
     userAddress: "",
-    userEmail: "jw1xf5lyckb@temporary-mail.net",
+    userEmail: "",
     randomPaymentString: "4532259913102589",
     userLocation: "",
     password: String,
@@ -35,6 +35,8 @@ export default {
       state.userLocation = payload;
     },
     setUserData(state, { name, address, email, location, password }) {
+      console.log("setUserData");
+      console.log(name, address, email, location, password);
       if (name) state.userName = name;
       if (address) state.userAddress = address;
       if (email) state.userEmail = email;

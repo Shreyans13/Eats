@@ -19,11 +19,25 @@ const apiCall = (endpoint, payload) => {
 };
 
 const triggerOTP = (email) => {
+  console.log("payload triggerOTP");
+  console.log(email);
   const response = apiCall(Endpoints.email.trigger, {
     email: email,
   });
   return response;
 };
+
+const verifyOTP = (payload) => {
+  console.log("payload verifyOTP");
+  console.log(payload);
+  const response = apiCall(Endpoints.email.verify, {
+    verification_key: payload.verification_key,
+    otp: payload.otp,
+    check: payload.check,
+  });
+  return response;
+};
+
 const signUpUser = (user) => {
   console.log(user);
   console.log(Endpoints.email.trigger);
@@ -78,6 +92,7 @@ const logout = () => {
 };
 export default {
   triggerOTP,
+  verifyOTP,
 
   getResturantsDetail,
   getResturants,
