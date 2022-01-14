@@ -1,10 +1,39 @@
 import API from "../api/index";
+import STORAGE from "../api/storage";
 
 export const apiAction = {
   triggerOTP({ commit }, email) {
-    console.log(commit);
-    return API.triggerOTP(email);
+    commit("toggleLoading", true);
+    return API.triggerOTP(email)
+      .then((response) => {
+        console.log(response);
+        STORAGE.setOTPSessionToken(response.data);
+        commit("apiSuccess");
+        return "SUCCESS";
+      })
+      .catch((error) => {
+        console.log("error");
+        console.log(typeof error);
+        console.log(error);
+        console.log(Object.keys(error));
+        console.log(error.toJSON().status);
+        console.log(JSON.stringify(error));
+        const err = error.toJSON();
+        console.log(err);
+        console.log(error.response.data);
+        console.log(error.response.status);
+        console.log(error.response.headers);
+        commit("apiFailure", {
+          statusCode: error.response.status,
+          error: err.name,
+          errorMessage: error.response.data.error
+            ? error.response.data.error
+            : err.message,
+        });
+        return "FAILURE";
+      });
   },
+  // ---------------------------------------------------------------------------------
   verifyOTP({ commit }, payload) {
     console.log(commit);
     console.log(payload);

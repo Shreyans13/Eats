@@ -1,5 +1,15 @@
 <template>
   <div class="mt-3">
+    {{ Error }}
+    <v-alert
+      text
+      prominent
+      type="error"
+      icon="mdi-cloud-alert"
+      v-if="Error.status === 'FAILURE'"
+    >
+      {{ Error.message }}
+    </v-alert>
     <div v-show="box === 'EMAIL'">
       <validation-observer ref="observer" v-slot="{ invalid }">
         <form @submit.prevent="trigger">
@@ -22,8 +32,7 @@
             :disabled="invalid"
             block
             elevation="3"
-            :loading="loading"
-            @click="loading = true"
+            :loading="getLoading"
           >
             Send OTP
           </v-btn>
@@ -159,27 +168,21 @@ import {
   length,
 } from "vee-validate/dist/rules";
 import { extend, ValidationObserver, ValidationProvider } from "vee-validate";
-import { mapActions } from "vuex";
+import { mapActions, mapGetters } from "vuex";
 import router from "../router/index";
 
 extend("digits", digits);
 extend("required", required);
-extend("regex", {
-  ...regex,
-  message: "{_field_} {_value_} does not match {regex}",
-});
-extend("email", {
-  ...email,
-  message: "Email must be valid",
-});
+extend("regex", regex);
+extend("email", email);
 extend("length", length);
+
 extend("verify_password", {
   message: `The password must contain at least: 1 uppercase letter, 1 lowercase letter, 1 number, and one special character (E.g. , . _ & ? etc)`,
   validate: (value) => {
-    var strongRegex = new RegExp(
+    return new RegExp(
       "^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#%&])(?=.{8,})"
-    );
-    return strongRegex.test(value);
+    ).test(value);
   },
 });
 
@@ -199,25 +202,22 @@ export default {
     show1: false,
     box: "EMAIL",
     show2: false,
-    loading: false,
+    // loading: false,
   }),
-
+  computed: {
+    ...mapGetters({ getLoading: "getLoading", Error: "getError" }),
+  },
   methods: {
-    ...mapActions([
-      "updateUserData",
-      "triggerOTP",
-      "verifyOTP", //also supports payload `this.nameOfAction(amount)`
-    ]),
+    ...mapActions(["updateUserData", "triggerOTP", "verifyOTP"]),
+
     trigger() {
-      this.triggerOTP(this.email)
-        .then((r) => {
-          console.log(r);
-          this.loading = false;
+      this.triggerOTP(this.email).then((status) => {
+        console.log(status);
+        if (status === "SUCCESS") {
+          console.log("OTP");
           this.box = "OTP";
-        })
-        .catch((error) => {
-          console.error(error);
-        });
+        }
+      });
     },
     verify() {
       this.verifyOTP(this.otp);

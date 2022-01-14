@@ -4,6 +4,7 @@ import Vuex from "vuex";
 import shop from "./modules/shop";
 import cart from "./modules/cart";
 import user from "./modules/user";
+import error from "./modules/error";
 
 import { apiAction } from "./apiActions";
 console.log(apiAction);
@@ -100,5 +101,6 @@ export default new Vuex.Store({
     shop,
     cart,
     user,
+    error,
   },
 });

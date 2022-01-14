@@ -13,14 +13,8 @@ const apiCall = (endpoint, payload) => {
       "Content-Type": "application/json",
     },
     data: JSON.stringify(payload),
-  })
-    .then(function(response) {
-      return JSON.stringify(response.data);
-    })
-    .catch(function(error) {
-      console.log(error);
-      return error;
-    });
+  });
+  console.log(payload);
   return resp;
 };
 
