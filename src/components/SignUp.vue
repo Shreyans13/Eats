@@ -1,6 +1,5 @@
 <template>
   <div class="mt-3">
-    {{ Error }}
     <v-alert
       text
       prominent
@@ -11,6 +10,18 @@
       {{ Error.message }}
     </v-alert>
     <div v-show="box === 'EMAIL'">
+      <div class="text-center">
+        <v-btn
+          plain
+          elevation="2"
+          color="success"
+          align="center"
+          @click="alreadyVerfied"
+        >
+          <v-icon small class="mr-3">fas fa-user-check</v-icon> EMAIL Already
+          verified
+        </v-btn>
+      </div>
       <validation-observer ref="observer" v-slot="{ invalid }">
         <form @submit.prevent="trigger">
           <validation-provider
@@ -197,7 +208,7 @@ export default {
   },
   data: () => ({
     name: "",
-    email: "jalixife@ryteto.me",
+    email: "qojinabi@ryteto.me",
     address: "",
     city: "",
     password: "asdfA234@",
@@ -259,6 +270,9 @@ export default {
         : this.box == "OTP"
         ? (this.box = "CREATE")
         : this.box;
+    },
+    alreadyVerfied() {
+      this.box = "CREATE";
     },
     reVerify() {
       this.box = "EMAIL";

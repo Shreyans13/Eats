@@ -95,6 +95,37 @@ export const apiAction = {
       });
   },
 
+  loginUser({ state, commit }, password) {
+    commit("toggleLoading", true);
+    console.log("state");
+    console.log(state.user);
+    return API.loginUser({
+      email: state.user.userEmail,
+      password: password,
+    })
+      .then((response) => {
+        console.log("response loginUser");
+        console.log(response);
+        STORAGE.setJWTToken(response.data.token);
+        commit("apiSuccess");
+        return "SUCCESS";
+      })
+      .catch((error) => {
+        console.log("error loginUser");
+        console.log(error);
+        const err = error.toJSON();
+        console.log(err);
+        commit("apiFailure", {
+          statusCode: error.response.status,
+          error: err.name,
+          errorMessage: error.response.data.error
+            ? error.response.data.error
+            : err.message,
+        });
+        return "FAILURE";
+      });
+  },
+
   updateUserData({ commit }, payload) {
     console.log("updateUserData");
     console.log(payload);

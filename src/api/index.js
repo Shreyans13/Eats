@@ -53,6 +53,15 @@ const signUpUser = (payload) => {
   return response;
 };
 
+const loginUser = (payload) => {
+  console.log("payload loginUser");
+  console.log(payload);
+  const response = apiCall(Endpoints.user.login, payload);
+  console.log("resp loginUser");
+  console.log(response);
+  return response;
+};
+
 const getResturants = () => {
   return new Promise((resolve) => {
     setTimeout(function() {
@@ -102,6 +111,8 @@ const logout = () => {
 export default {
   triggerOTP,
   verifyOTP,
+  signUpUser,
+  loginUser,
 
   getResturantsDetail,
   getResturants,
@@ -109,6 +120,5 @@ export default {
   postOrder,
   bookTable,
   cancelTable,
-  signUpUser,
   logout,
 };
