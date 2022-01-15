@@ -33,7 +33,6 @@ export const apiAction = {
         return "FAILURE";
       });
   },
-  // ---------------------------------------------------------------------------------
   verifyOTP({ state, commit }, otp) {
     commit("toggleLoading", true);
     console.log("state");
@@ -62,11 +61,44 @@ export const apiAction = {
         return "FAILURE";
       });
   },
+  signUpUser({ state, commit }, password) {
+    commit("toggleLoading", true);
+    console.log("state");
+    console.log(state.user);
+    return API.signUpUser({
+      name: state.user.userName,
+      email: state.user.userEmail,
+      address: state.user.userAddress,
+      city: state.user.userCity,
+      password: password,
+    })
+      .then((response) => {
+        console.log("response signUpUser");
+        console.log(response);
+        STORAGE.setJWTToken(response.data.token);
+        commit("apiSuccess");
+        return "SUCCESS";
+      })
+      .catch((error) => {
+        console.log("error signUpUser");
+        console.log(error);
+        const err = error.toJSON();
+        console.log(err);
+        commit("apiFailure", {
+          statusCode: error.response.status,
+          error: err.name,
+          errorMessage: error.response.data.error
+            ? error.response.data.error
+            : err.message,
+        });
+        return "FAILURE";
+      });
+  },
+
   updateUserData({ commit }, payload) {
     console.log("updateUserData");
     console.log(payload);
     commit("setUserData", payload);
-    API.signUpUser(payload);
   },
   setResturants({ commit, state }) {
     console.log("this.setResturants called");

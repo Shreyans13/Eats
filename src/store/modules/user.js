@@ -4,8 +4,8 @@ export default {
     userName: "Rebecca Ann",
     userAddress: "",
     userEmail: "",
+    userCity: "",
     randomPaymentString: "4532259913102589",
-    userLocation: "",
     password: String,
     userImg:
       "https://image.shutterstock.com/image-vector/user-simple-vector-icon-illustration-600w-1765573355.jpg",
@@ -18,11 +18,11 @@ export default {
         address: state.userAddress,
         raPaSy: state.randomPaymentString,
         img: state.userImg,
-        loc: state.userLocation,
+        loc: state.userCity,
       };
     },
     getCity: (state) => {
-      return state.userLocation;
+      return state.userCity;
     },
     getAuthentication: (state) => state.isAuthenticated,
   },
@@ -32,23 +32,21 @@ export default {
     },
     setCity(state, payload) {
       console.log(payload);
-      state.userLocation = payload;
+      state.userCity = payload;
     },
-    setUserData(state, { name, address, email, location, password }) {
+    setUserData(state, { name, address, email, city }) {
       console.log("setUserData");
-      console.log(name, address, email, location, password);
+      console.log(name, address, email, city);
       if (name) state.userName = name;
       if (address) state.userAddress = address;
       if (email) state.userEmail = email;
-      if (location) state.userLocation = location;
-      if (password) state.password = password;
+      if (city) state.userCity = city;
     },
     unsetUserData(state) {
       state.userName = "";
       state.userAddress = "";
       state.userEmail = "";
-      state.userLocation = "";
-      state.password = "word";
+      state.userCity = "";
       state.isAuthenticated = false;
     },
   },

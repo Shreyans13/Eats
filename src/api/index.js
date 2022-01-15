@@ -38,10 +38,19 @@ const verifyOTP = (payload) => {
   return response;
 };
 
-const signUpUser = (user) => {
-  console.log(user);
-  console.log(Endpoints.email.trigger);
-  // apiCall(Endpoints.email.trigger);
+const signUpUser = (payload) => {
+  console.log("payload signUpUser");
+  console.log(payload);
+  const response = apiCall(Endpoints.user.create, {
+    name: payload.name,
+    email: payload.email,
+    address: payload.address,
+    city: payload.city,
+    password: payload.password,
+  });
+  console.log("resp signUpUser");
+  console.log(response);
+  return response;
 };
 
 const getResturants = () => {

@@ -5,4 +5,7 @@ export default {
     trigger: `${url}` + "/email/trigger/otp",
     verify: `${url}` + "/email/verify/otp",
   },
+  user: {
+    create: `${url}` + "/user/create",
+  },
 };

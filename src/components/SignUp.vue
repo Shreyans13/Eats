@@ -64,6 +64,7 @@
             :disabled="invalid"
             block
             elevation="3"
+            :loading="getLoading"
           >
             Verify OTP
           </v-btn>
@@ -84,7 +85,7 @@
         </v-btn>
       </div>
       <validation-observer ref="observer" v-slot="{ invalid }">
-        <form @submit.prevent="signUpUser">
+        <form @submit.prevent="create">
           <validation-provider v-slot="{ errors }" name="Name" rules="required">
             <v-text-field
               v-model="name"
@@ -99,6 +100,7 @@
             rules="required|email"
           >
             <v-text-field
+              disabled
               v-model="email"
               :error-messages="errors"
               label="E-mail"
@@ -150,6 +152,7 @@
             :disabled="invalid"
             block
             elevation="3"
+            :loading="getLoading"
           >
             Sign Up
           </v-btn>
@@ -208,7 +211,7 @@ export default {
     ...mapGetters({ getLoading: "getLoading", Error: "getError" }),
   },
   methods: {
-    ...mapActions(["updateUserData", "triggerOTP", "verifyOTP"]),
+    ...mapActions(["updateUserData", "triggerOTP", "verifyOTP", "signUpUser"]),
 
     trigger() {
       this.updateUserData({
@@ -232,16 +235,22 @@ export default {
       });
       // this.box = "CREATE";
     },
-    signUpUser() {
+    create() {
+      console.log("CREATE METHOD CALLED");
       this.$refs.observer.validate();
       this.updateUserData({
         name: this.name,
         email: this.email,
         address: this.address,
         city: this.city,
-        password: this.password,
       });
-      router.push({ name: "Order" });
+      this.signUpUser(this.password).then((status) => {
+        console.log(status);
+        if (status === "SUCCESS") {
+          router.push({ name: "Order" });
+        }
+      });
+      //
     },
     change() {
       console.log("changed");
