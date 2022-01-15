@@ -6,23 +6,12 @@ export const apiAction = {
     commit("toggleLoading", true);
     return API.triggerOTP(email)
       .then((response) => {
-        console.log(response);
         STORAGE.setOTPSessionToken(response.data);
         commit("apiSuccess");
         return "SUCCESS";
       })
       .catch((error) => {
-        console.log("error");
-        console.log(typeof error);
-        console.log(error);
-        console.log(Object.keys(error));
-        console.log(error.toJSON().status);
-        console.log(JSON.stringify(error));
         const err = error.toJSON();
-        console.log(err);
-        console.log(error.response.data);
-        console.log(error.response.status);
-        console.log(error.response.headers);
         commit("apiFailure", {
           statusCode: error.response.status,
           error: err.name,
@@ -35,16 +24,12 @@ export const apiAction = {
   },
   verifyOTP({ state, commit }, otp) {
     commit("toggleLoading", true);
-    console.log("state");
-    console.log(state.user.userEmail);
     return API.verifyOTP({
       otp: otp,
       verification_key: STORAGE.getOTPSessionToken(),
       check: state.user.userEmail,
     })
-      .then((response) => {
-        console.log(response);
-        // STORAGE.setOTPSessionToken(response.data);
+      .then(() => {
         commit("apiSuccess");
         return "SUCCESS";
       })
@@ -63,8 +48,6 @@ export const apiAction = {
   },
   signUpUser({ state, commit }, password) {
     commit("toggleLoading", true);
-    console.log("state");
-    console.log(state.user);
     return API.signUpUser({
       name: state.user.userName,
       email: state.user.userEmail,
@@ -73,15 +56,12 @@ export const apiAction = {
       password: password,
     })
       .then((response) => {
-        console.log("response signUpUser");
-        console.log(response);
         STORAGE.setJWTToken(response.data.token);
         commit("apiSuccess");
+        commit("setAuthentication", true);
         return "SUCCESS";
       })
       .catch((error) => {
-        console.log("error signUpUser");
-        console.log(error);
         const err = error.toJSON();
         console.log(err);
         commit("apiFailure", {
@@ -97,17 +77,14 @@ export const apiAction = {
 
   loginUser({ state, commit }, password) {
     commit("toggleLoading", true);
-    console.log("state");
-    console.log(state.user);
     return API.loginUser({
       email: state.user.userEmail,
       password: password,
     })
       .then((response) => {
-        console.log("response loginUser");
-        console.log(response);
         STORAGE.setJWTToken(response.data.token);
         commit("apiSuccess");
+        commit("setAuthentication", true);
         return "SUCCESS";
       })
       .catch((error) => {

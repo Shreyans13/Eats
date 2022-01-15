@@ -98,7 +98,6 @@ export default {
         email: this.email,
       });
       this.loginUser(this.password).then((status) => {
-        console.log(status);
         if (status === "SUCCESS") {
           router.push({ name: "Order" });
         }

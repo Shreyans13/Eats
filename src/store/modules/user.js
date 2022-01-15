@@ -49,6 +49,9 @@ export default {
       state.userCity = "";
       state.isAuthenticated = false;
     },
+    setAuthentication(state, payload) {
+      state.isAuthenticated = payload;
+    },
   },
   actions: {
     updateAddress({ commit }, payload) {

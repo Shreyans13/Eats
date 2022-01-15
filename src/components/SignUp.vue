@@ -229,25 +229,19 @@ export default {
         email: this.email,
       });
       this.triggerOTP(this.email).then((status) => {
-        console.log(status);
         if (status === "SUCCESS") {
-          console.log("OTP");
           this.box = "OTP";
         }
       });
     },
     verify() {
       this.verifyOTP(this.otp).then((status) => {
-        console.log(status);
         if (status === "SUCCESS") {
-          console.log("CREATE");
           this.box = "CREATE";
         }
       });
-      // this.box = "CREATE";
     },
     create() {
-      console.log("CREATE METHOD CALLED");
       this.$refs.observer.validate();
       this.updateUserData({
         name: this.name,
@@ -256,20 +250,10 @@ export default {
         city: this.city,
       });
       this.signUpUser(this.password).then((status) => {
-        console.log(status);
         if (status === "SUCCESS") {
           router.push({ name: "Order" });
         }
       });
-      //
-    },
-    change() {
-      console.log("changed");
-      this.box == "EMAIL"
-        ? (this.box = "OTP")
-        : this.box == "OTP"
-        ? (this.box = "CREATE")
-        : this.box;
     },
     alreadyVerfied() {
       this.box = "CREATE";

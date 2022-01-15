@@ -14,13 +14,10 @@ const apiCall = (endpoint, payload) => {
     },
     data: JSON.stringify(payload),
   });
-  console.log(payload);
   return resp;
 };
 
 const triggerOTP = (email) => {
-  console.log("payload triggerOTP");
-  console.log(email);
   const response = apiCall(Endpoints.email.trigger, {
     email: email,
   });
@@ -28,8 +25,6 @@ const triggerOTP = (email) => {
 };
 
 const verifyOTP = (payload) => {
-  console.log("payload verifyOTP");
-  console.log(payload);
   const response = apiCall(Endpoints.email.verify, {
     verification_key: payload.verification_key,
     otp: payload.otp,
@@ -39,8 +34,6 @@ const verifyOTP = (payload) => {
 };
 
 const signUpUser = (payload) => {
-  console.log("payload signUpUser");
-  console.log(payload);
   const response = apiCall(Endpoints.user.create, {
     name: payload.name,
     email: payload.email,
@@ -48,17 +41,11 @@ const signUpUser = (payload) => {
     city: payload.city,
     password: payload.password,
   });
-  console.log("resp signUpUser");
-  console.log(response);
   return response;
 };
 
 const loginUser = (payload) => {
-  console.log("payload loginUser");
-  console.log(payload);
   const response = apiCall(Endpoints.user.login, payload);
-  console.log("resp loginUser");
-  console.log(response);
   return response;
 };
 
