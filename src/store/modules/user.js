@@ -47,7 +47,6 @@ export default {
       state.userAddress = "";
       state.userEmail = "";
       state.userCity = "";
-      state.isAuthenticated = false;
     },
     setAuthentication(state, payload) {
       state.isAuthenticated = payload;

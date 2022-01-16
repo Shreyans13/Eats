@@ -8,5 +8,6 @@ export default {
   user: {
     create: `${url}` + "/user/create",
     login: `${url}` + "/user/login",
+    logout: `${url}` + "/user/logout",
   },
 };

@@ -140,7 +140,7 @@ export default {
     this.setAddress();
   },
   methods: {
-    ...mapActions(["updateAddress", "deleteUserData"]),
+    ...mapActions(["updateAddress", "logoutUser"]),
     setAddress() {
       this.address = this.getUser.address;
     },
@@ -152,8 +152,11 @@ export default {
       window.open(link, "_blank");
     },
     logout() {
-      this.deleteUserData();
-      router.push({ name: "Register" });
+      this.logoutUser().then((status) => {
+        if (status == "SUCCESS") {
+          router.push({ name: "Register" });
+        }
+      });
     },
   },
 };

@@ -17,7 +17,7 @@ const storage = {
   },
   getJWTToken() {
     if (localStorage) {
-      return JSON.parse(localStorage.getItem("TOKEN")).verification_key;
+      return JSON.parse(localStorage.getItem("TOKEN"));
     }
   },
   clearALL() {

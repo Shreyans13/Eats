@@ -3,50 +3,42 @@ const resturantsDetail = require("../fakeData/resturants").default
   .resturantsDetail;
 import Endpoints from "./endpoints";
 const axios = require("axios");
+import STORAGE from "./storage";
 
 let history = [];
-const apiCall = (endpoint, payload) => {
+const apiCall = (endpoint, method, payload, loggedIN) => {
   const resp = axios({
-    method: "post",
+    method: method,
     url: endpoint,
-    headers: {
-      "Content-Type": "application/json",
-    },
+    headers: loggedIN
+      ? {
+          "Content-Type": "application/json",
+          authorization: "Bearer " + STORAGE.getJWTToken(),
+        }
+      : { "Content-Type": "application/json" },
     data: JSON.stringify(payload),
   });
   return resp;
 };
 
-const triggerOTP = (email) => {
-  const response = apiCall(Endpoints.email.trigger, {
-    email: email,
-  });
-  return response;
+const triggerOTP = (payload) => {
+  return apiCall(Endpoints.email.trigger, "post", payload, false);
 };
 
 const verifyOTP = (payload) => {
-  const response = apiCall(Endpoints.email.verify, {
-    verification_key: payload.verification_key,
-    otp: payload.otp,
-    check: payload.check,
-  });
-  return response;
+  return apiCall(Endpoints.email.verify, "post", payload, false);
 };
 
 const signUpUser = (payload) => {
-  const response = apiCall(Endpoints.user.create, {
-    name: payload.name,
-    email: payload.email,
-    address: payload.address,
-    city: payload.city,
-    password: payload.password,
-  });
-  return response;
+  return apiCall(Endpoints.user.create, "post", payload, false);
 };
 
 const loginUser = (payload) => {
-  const response = apiCall(Endpoints.user.login, payload);
-  return response;
+  return apiCall(Endpoints.user.login, "post", payload, false);
+};
+
+const logout = (payload) => {
+  return apiCall(Endpoints.user.logout, "delete", payload, true);
 };
 
 const getResturants = () => {
@@ -92,9 +84,6 @@ const cancelTable = (details) => {
   console.log(details);
 };
 
-const logout = () => {
-  console.log("Loged Out");
-};
 export default {
   triggerOTP,
   verifyOTP,

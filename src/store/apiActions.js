@@ -4,7 +4,7 @@ import STORAGE from "../api/storage";
 export const apiAction = {
   triggerOTP({ commit }, email) {
     commit("toggleLoading", true);
-    return API.triggerOTP(email)
+    return API.triggerOTP({ email: email })
       .then((response) => {
         STORAGE.setOTPSessionToken(response.data);
         commit("apiSuccess");
@@ -35,7 +35,6 @@ export const apiAction = {
       })
       .catch((error) => {
         const err = error.toJSON();
-        console.log(err);
         commit("apiFailure", {
           statusCode: error.response.status,
           error: err.name,
@@ -63,7 +62,6 @@ export const apiAction = {
       })
       .catch((error) => {
         const err = error.toJSON();
-        console.log(err);
         commit("apiFailure", {
           statusCode: error.response.status,
           error: err.name,
@@ -88,10 +86,7 @@ export const apiAction = {
         return "SUCCESS";
       })
       .catch((error) => {
-        console.log("error loginUser");
-        console.log(error);
         const err = error.toJSON();
-        console.log(err);
         commit("apiFailure", {
           statusCode: error.response.status,
           error: err.name,
@@ -102,20 +97,35 @@ export const apiAction = {
         return "FAILURE";
       });
   },
-
+  logoutUser({ commit }) {
+    commit("unsetUserData");
+    return API.logout({})
+      .then(() => {
+        commit("apiSuccess");
+        commit("setAuthentication", false);
+        commit("unsetUserData");
+        STORAGE.clearALL();
+        return "SUCCESS";
+      })
+      .catch((error) => {
+        const err = error.toJSON();
+        commit("apiFailure", {
+          statusCode: error.response.status,
+          error: err.name,
+          errorMessage: error.response.data.error
+            ? error.response.data.error
+            : err.message,
+        });
+        return "FAILURE";
+      });
+  },
   updateUserData({ commit }, payload) {
-    console.log("updateUserData");
-    console.log(payload);
     commit("setUserData", payload);
   },
   setResturants({ commit, state }) {
-    console.log("this.setResturants called");
-    console.log(state);
     if (!state.shop.resturants) {
-      console.log("called here");
       commit("updateLoadingState", true);
       API.getResturants().then((resturants) => {
-        console.log(resturants);
         commit("updateResturants", resturants.data);
         commit("updateLoadingState", false);
       });
@@ -149,9 +159,5 @@ export const apiAction = {
       user: getters.getUser,
       resturnat: getters.getDetailResturant,
     });
-  },
-  deleteUserData({ commit }) {
-    commit("unsetUserData");
-    API.logout();
   },
 };
