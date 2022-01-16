@@ -31,12 +31,9 @@ export default {
       state.userAddress = payload;
     },
     setCity(state, payload) {
-      console.log(payload);
       state.userCity = payload;
     },
     setUserData(state, { name, address, email, city }) {
-      console.log("setUserData");
-      console.log(name, address, email, city);
       if (name) state.userName = name;
       if (address) state.userAddress = address;
       if (email) state.userEmail = email;
@@ -54,7 +51,6 @@ export default {
   },
   actions: {
     updateAddress({ commit }, payload) {
-      console.log(payload);
       commit("setAddress", payload);
     },
     getUserLocation({ commit }) {

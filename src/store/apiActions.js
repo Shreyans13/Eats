@@ -81,6 +81,7 @@ export const apiAction = {
     })
       .then((response) => {
         STORAGE.setJWTToken(response.data.token);
+        commit("setUserData", response.data.user);
         commit("apiSuccess");
         commit("setAuthentication", true);
         return "SUCCESS";
