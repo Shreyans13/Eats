@@ -24,12 +24,14 @@
     </v-card-title>
     <v-card-text class="white--text">
       <v-row>
-        <v-col cols="6">{{ data.type }}</v-col>
+        <v-col cols="6" v-if="data.type">{{
+          data.type.charAt(0).toUpperCase() + data.type.slice(1)
+        }}</v-col>
         <v-col cols="6" class="grey--text d-flex align-end flex-column">
-          <h4 class="success--text">Rs {{ data.rate }} for one</h4>
+          <h4 class="success--text" v-if="data.rate">Rs {{ data.rate }}</h4>
         </v-col>
       </v-row>
-      <div class="warning--text">Opens at {{ data.time }}</div>
+      <div class="warning--text" v-if="data.time">{{ data.time }}</div>
     </v-card-text>
     <!-- <v-divider class="mx-4"></v-divider> -->
   </v-card>

@@ -1,4 +1,4 @@
-const url = "https://4448-103-112-21-234.ngrok.io";
+const url = "https://1f63-103-195-253-86.ngrok.io";
 
 export default {
   email: {
@@ -9,5 +9,8 @@ export default {
     create: `${url}` + "/user/create",
     login: `${url}` + "/user/login",
     logout: `${url}` + "/user/logout",
+  },
+  resturant: {
+    get: `${url}` + "/resturants",
   },
 };

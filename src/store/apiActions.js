@@ -123,13 +123,30 @@ export const apiAction = {
   updateUserData({ commit }, payload) {
     commit("setUserData", payload);
   },
+
   setResturants({ commit, state }) {
     if (!state.shop.resturants) {
       commit("updateLoadingState", true);
-      API.getResturants().then((resturants) => {
-        commit("updateResturants", resturants.data);
-        commit("updateLoadingState", false);
-      });
+      return API.getResturants({
+        location: "Jamshedpur",
+      })
+        .then((resturants) => {
+          commit("updateResturants", resturants.data.data);
+          commit("updateLoadingState", false);
+          commit("apiSuccess");
+          return "SUCCESS";
+        })
+        .catch((error) => {
+          const err = error.toJSON();
+          commit("apiFailure", {
+            statusCode: error.response.status,
+            error: err.name,
+            errorMessage: error.response.data.error
+              ? error.response.data.error
+              : err.message,
+          });
+          return "FAILURE";
+        });
     }
   },
   setDetailResturant({ commit, state }, id) {

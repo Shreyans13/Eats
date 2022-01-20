@@ -1,9 +1,8 @@
-const resturants = require("../fakeData/resturants").default.resturants;
-const resturantsDetail = require("../fakeData/resturants").default
-  .resturantsDetail;
 import Endpoints from "./endpoints";
 const axios = require("axios");
 import STORAGE from "./storage";
+const resturantsDetail = require("../fakeData/resturants").default
+  .resturantsDetail;
 
 let history = [];
 const apiCall = (endpoint, method, payload, loggedIN) => {
@@ -41,12 +40,8 @@ const logout = (payload) => {
   return apiCall(Endpoints.user.logout, "delete", payload, true);
 };
 
-const getResturants = () => {
-  return new Promise((resolve) => {
-    setTimeout(function() {
-      resolve(resturants);
-    }, 1000);
-  });
+const getResturants = (payload) => {
+  return apiCall(Endpoints.resturant.get, "post", payload, true);
 };
 
 const getResturantsDetail = (id) => {
