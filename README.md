@@ -1,8 +1,13 @@
 # Eats
 
 ## Getting Started
-A UI/UX design for a Food delivery application based on a real life scenario made with `Vue.js` and `Vuetify`.<br>
-Hosted at Github Pages [here](https://shreyans13.github.io/Eats/#/).
+The "Eats" Food Delivery application is a stunning UI/UX design created using the `Vue.js` framework and the `Vuetify` component library. Developed based on a real-life scenario, this application offers a delightful and intuitive user experience for ordering food online.<br>
+
+With its clean and modern design, the "Eats" application provides users with a visually appealing interface that is easy to navigate. The thoughtful arrangement of elements, intuitive icons, and well-organized layout contribute to an effortless and enjoyable user journey.
+
+Overall, the "Eats" Food Delivery application exemplifies the power of Vue.js and Vuetify in crafting beautiful and user-friendly interfaces. Its real-life scenario-based design, combined with the smooth navigation and interactive components, offers an exceptional user experience for online food ordering.
+
+**🚀🚀 Hosted at Github Pages [here](https://shreyans13.github.io/Eats/#/).**
 
 ## Some Features
 - Progressive Web App (PWA) supported.
