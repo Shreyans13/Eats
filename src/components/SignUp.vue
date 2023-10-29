@@ -2,76 +2,33 @@
   <validation-observer ref="observer" v-slot="{ invalid }">
     <form @submit.prevent="submit">
       <validation-provider v-slot="{ errors }" name="Name" rules="required">
-        <v-text-field
-          v-model="name"
-          :error-messages="errors"
-          label="Name"
-          required
-        ></v-text-field>
+        <v-text-field v-model="name" :error-messages="errors" label="Name" required></v-text-field>
       </validation-provider>
 
-      <validation-provider
-        v-slot="{ errors }"
-        name="email"
-        rules="required|email"
-      >
-        <v-text-field
-          v-model="email"
-          :error-messages="errors"
-          label="E-mail"
-          required
-        ></v-text-field>
+      <validation-provider v-slot="{ errors }" name="email" rules="required|email">
+        <v-text-field v-model="email" :error-messages="errors" label="E-mail" required></v-text-field>
       </validation-provider>
 
-      <validation-provider
-        v-slot="{ errors }"
-        name="password"
-        rules="required|verify_password"
-      >
-        <v-text-field
-          v-model="password"
-          :error-messages="errors"
-          label="Password"
-          :append-icon="show1 ? 'mdi-eye' : 'mdi-eye-off'"
-          :type="show1 ? 'text' : 'password'"
-          @click:append="show1 = !show1"
-          required
-        ></v-text-field>
+      <validation-provider v-slot="{ errors }" name="password" rules="required|verify_password">
+        <v-text-field v-model="password" :error-messages="errors" label="Password"
+          :append-icon="show1 ? 'mdi-eye' : 'mdi-eye-off'" :type="show1 ? 'text' : 'password'"
+          @click:append="show1 = !show1" required></v-text-field>
       </validation-provider>
 
-      <validation-provider
-        v-slot="{ errors }"
-        name="phoneNumber"
-        :rules="{
-          required: true,
-          digits: 10,
-        }"
-      >
-        <v-text-field
-          v-model="phoneNumber"
-          :counter="10"
-          :error-messages="errors"
-          label="Phone Number"
-          required
-        ></v-text-field>
+      <validation-provider v-slot="{ errors }" name="phoneNumber" :rules="{
+        required: true,
+        digits: 10,
+      }">
+        <v-text-field v-model="phoneNumber" :counter="10" :error-messages="errors" label="Phone Number" required>
+        </v-text-field>
       </validation-provider>
 
       <validation-provider v-slot="{ errors }" name="address" rules="required">
-        <v-text-field
-          v-model="address"
-          :error-messages="errors"
-          label="Address"
-          required
-        ></v-text-field>
+        <v-text-field v-model="address" :error-messages="errors" label="Address" required></v-text-field>
       </validation-provider>
 
       <validation-provider v-slot="{ errors }" name="city" rules="required">
-        <v-text-field
-          v-model="city"
-          :error-messages="errors"
-          label="City"
-          required
-        ></v-text-field>
+        <v-text-field v-model="city" :error-messages="errors" label="City" required></v-text-field>
       </validation-provider>
 
       <v-btn color="success" class="mr-4 mt-3" type="submit" :disabled="invalid" block elevation="3"> Sign Up </v-btn>
@@ -137,20 +94,20 @@ export default {
   }),
 
   methods: {
-      ...mapActions([
-            'updateUserData', //also supports payload `this.nameOfAction(amount)` 
-        ]),
-    submit() {
+    ...mapActions([
+      'updateUserData', //also supports payload `this.nameOfAction(amount)` 
+    ]),
+    async submit() {
       this.$refs.observer.validate();
-      this.updateUserData({
-          name: this.name,
-          phoneNumber: this.phoneNumber,
-          email: this.email,
-          address: this.address,
-          city: this.city,
-          password: this.password,
+      await this.updateUserData({
+        name: this.name,
+        phoneNumber: this.phoneNumber,
+        email: this.email,
+        address: this.address,
+        city: this.city,
+        password: this.password,
       })
-    router.push({ name: "Order"});
+      router.push({ name: "Order" });
     },
   },
 };

@@ -46,10 +46,12 @@ export default {
   },
   mounted() {
     this.getUserLocation();
+    this.getUserAccount();
   },
   methods: {
     ...mapActions([
       "getUserLocation", //also supports payload `this.nameOfAction(amount)`
+      "getUserAccount",
     ]),
   },
 };
